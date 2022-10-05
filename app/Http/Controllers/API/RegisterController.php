@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends BaseController
 {
-   /**
+    /**
      * Register api
      *
      * @return \Illuminate\Http\Response
@@ -26,21 +26,19 @@ class RegisterController extends BaseController
 
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return $this->sendError('Validation Error.', $validator->errors());
         }
 
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+        $user = User::create($data);
         if ($user) {
             event(new Registered($user));
-        $success['token'] =  $user->createToken('auth-token')->plainTextToken;
-        $success['name'] =  $user->name;
+            $success['token'] =  $user->createToken('auth-token')->plainTextToken;
+            $success['name'] =  $user->name;
 
-        return $this->sendResponse($success, 'User register successfully.');
+            return $this->sendResponse($success, 'User register successfully.');
+        }
     }
-    }
-
-
 }
