@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\API\AuthController;
-use App\Http\Controllers\API\RegisterController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\Authentification\AuthController;
+use App\Http\Controllers\API\Authentification\ForgotPasswordController;
+use App\Http\Controllers\API\Authentification\RegisterController;
+use App\Http\Controllers\API\Authentification\Verification\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');;
+    Route::post('/verify-resend', [VerificationController::class, 'resend']);
+    Route::post('/ForgotPassword',ForgotPasswordController::class);
 });
 
 Route::middleware('guest')->group(function () {
@@ -26,6 +30,5 @@ Route::middleware('guest')->group(function () {
 
 
     // guest verification (temporary auth)
-    // Route::post('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->name('verify');
-    // Route::post('/verify-resend', [VerificationController::class, 'resend']);
+
 });
