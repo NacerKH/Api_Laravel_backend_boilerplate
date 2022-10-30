@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class AuthUserTest extends TestCase
+class RegisterUserTest extends TestCase
 {
     use RefreshDatabase;
    /**
@@ -51,7 +51,7 @@ class AuthUserTest extends TestCase
 
         $response = $this->postJson(route("user.register"), $data);
 
-        $response->assertJsonValidationErrorFor("email"); //without Validator::make return an array 
+        $response->assertJsonValidationErrorFor("email"); //use in validation helper validate([])
 
 
         $data = [

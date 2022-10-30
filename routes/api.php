@@ -29,7 +29,7 @@ Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'
 });
 
 Route::middleware('guest')->group(function () {
-    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/login', [AuthController::class, 'login'])->name('user.login');
     Route::post('/register', [RegisterController::class,'register'])->name('user.register');
 
 

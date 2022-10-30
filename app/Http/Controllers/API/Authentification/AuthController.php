@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Authentification;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends BaseController
@@ -18,7 +19,7 @@ class AuthController extends BaseController
         ]);
 
         if (!$this->guard()->attempt($credentials)) {
-            return $this->sendError('Unauthorised.', ['error' => 'Unauthorised'], 422);
+            return $this->sendError('Unauthorised.', ['error' => 'Unauthorised'], Response::HTTP_UNAUTHORIZED);
         }
         $this->guard()->attempt($credentials);
         $token = $this->guard()->user()->createToken('auth-token')->plainTextToken;
