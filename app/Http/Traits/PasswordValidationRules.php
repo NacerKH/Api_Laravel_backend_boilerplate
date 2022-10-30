@@ -1,6 +1,4 @@
-
 <?php
-
 namespace App\Http\Traits;
 
 use App\Rules\Password;

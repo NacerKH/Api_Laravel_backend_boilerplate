@@ -4,6 +4,7 @@ use App\Http\Controllers\API\Authentification\AuthController;
 use App\Http\Controllers\API\Authentification\ForgotPasswordController;
 use App\Http\Controllers\API\Authentification\RegisterController;
 use App\Http\Controllers\API\Authentification\Verification\VerificationController;
+use App\Http\Controllers\API\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,8 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');;
     Route::post('/verify-resend', [VerificationController::class, 'resend']);
     Route::post('/ForgotPassword',ForgotPasswordController::class);
+    ## Update user informations Profil
+    Route::post('/updateUserInformationProfil',[UserController::class, 'update']);
 });
 
 Route::middleware('guest')->group(function () {

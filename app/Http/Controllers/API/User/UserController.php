@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\User;
 
+use App\Http\Controllers\API\BaseController;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\PasswordValidationRules;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -11,27 +12,30 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 
-class UserController extends Controller
+class UserController extends BaseController
 {
     use PasswordValidationRules;
+
+    // dependency injection
+    public function __construct(private Request $request)
+    {
+
+    }
     /**
      * Validate and update the given user's profile information.
      *
-     * @param  mixed  $user
-     * @param  array  $input
+     *
      * @return void
      */
-    public function update($user, array $input)
+    public function update()
     {
-        Validator::make($input, [
+         $user=$this->request->user();
+         $input=$this->request->all();
+        Validator::make(  $input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
-        if (isset($input['password'])){
-            $this->updatePassword($user,$input);
-                }
-
 
          if (isset($input['photo'])) {
             $user->updateProfilePhoto($input['photo']);
@@ -45,6 +49,9 @@ class UserController extends Controller
                 'name' => $input['name'],
                 'email' => $input['email'],
             ])->save();
+            $success['email'] =  $user->email;
+            $success['name'] =  $user->name;
+            return $this->sendResponse($success, 'User was updated profile information. successfully.');
         }
     }
 
@@ -74,8 +81,10 @@ class UserController extends Controller
      * @param  array  $input
      * @return void
      */
-    protected function updatePassword($user, array $input)
+    public function updatePassword()
     {
+        $user=$this->request->user();
+        $input=$this->request->all();
         Validator::make($input, [
             'current_password' => ['required', 'string'],
             'password' => $this->passwordRules(),
@@ -88,6 +97,9 @@ class UserController extends Controller
         $user->forceFill([
             'password' => Hash::make($input['password']),
         ])->save();
+        $success['email'] =  $user->email;
+        $success['name'] =  $user->name;
+        return $this->sendResponse($success, 'User was updated password successfully.');
     }
-    
+
 }
