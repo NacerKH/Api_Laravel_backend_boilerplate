@@ -18,21 +18,21 @@ class Password implements Rule
      *
      * @var bool
      */
-    protected $requireUppercase = false;
+    protected $requireUppercase = true;
 
     /**
      * Indicates if the password must contain one numeric digit.
      *
      * @var bool
      */
-    protected $requireNumeric = false;
+    protected $requireNumeric = true;
 
     /**
      * Indicates if the password must contain one special character.
      *
      * @var bool
      */
-    protected $requireSpecialCharacter = false;
+    protected $requireSpecialCharacter = true;
 
     /**
      * The message that should be used when validation fails.

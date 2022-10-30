@@ -74,11 +74,10 @@ class UserController extends BaseController
     }
 
 
-      /**
+    /**
      * Validate and update the user's password.
      *
-     * @param  mixed  $user
-     * @param  array  $input
+     *
      * @return void
      */
     public function updatePassword()

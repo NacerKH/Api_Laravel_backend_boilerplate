@@ -23,8 +23,9 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');;
     Route::post('/verify-resend', [VerificationController::class, 'resend']);
     Route::post('/ForgotPassword',ForgotPasswordController::class);
-    ## Update user informations Profil
+    ## Update user informations Profil & Password
     Route::post('/updateUserInformationProfil',[UserController::class, 'update']);
+    Route::post('/updateUserPassword',[UserController::class, 'updatePassword']);
 });
 
 Route::middleware('guest')->group(function () {
