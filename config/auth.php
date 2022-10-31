@@ -113,4 +113,19 @@ return [
 
     'password_timeout' => 10800,
 
+        /*
+    |--------------------------------------------------------------------------
+    | Link Verficationn Timeout
+    |--------------------------------------------------------------------------
+    |
+    | Here you may define the amount of seconds before a url confirmation
+    | times out and the user
+    |  By default, the timeout lasts for three hours.
+    |
+    */
+
+    'verification'=>[
+        'expire'=>60,
+    ],
+
 ];

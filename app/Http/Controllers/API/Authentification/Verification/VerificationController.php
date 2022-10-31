@@ -19,13 +19,13 @@ class VerificationController extends BaseController
         }
 
         $user = User::findOrFail($user_id);
-        
+
 
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
         }
 
-        return redirect()->to('/');
+        return  response()->json()->isOk();
     }
 
     public function resend(Request $request) {
