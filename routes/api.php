@@ -24,7 +24,7 @@ Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'
     Route::post('/verify-resend', [VerificationController::class, 'resend']);
 
     ## Update user informations Profil & Password
-    Route::post('/updateUserInformationProfil',[UserController::class, 'update']);
+    Route::post('/updateUserInformationProfil',[UserController::class, 'update'])->name('user.updateProfil');
     Route::post('/updateUserPassword',[UserController::class, 'updatePassword'])->name('user.update.password');
 });
 
