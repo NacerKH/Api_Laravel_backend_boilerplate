@@ -15,13 +15,13 @@ use Tests\TestCase;
 class EmailVerficationTest extends TestCase
 {  use RefreshDatabase;
     /**
-     * 
+     *
      *  resend email verification
      *
      */
     public function test_user_can_verify_his_email()
     {
-        Notification::fake();
+       
 
         $data = [
             "email" => "foulen@example.com",

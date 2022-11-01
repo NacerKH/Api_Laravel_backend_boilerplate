@@ -33,7 +33,8 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'login'])->name('user.login');
     Route::post('/register', [RegisterController::class,'register'])->name('user.register');
     # guest reset password (temporary link)
+    Route::post('/PasswordResetLink',[ForgotPasswordController::class, 'PasswordResetLink'])->name('PasswordResetLink');
+
     Route::post('/ForgotPassword',[ForgotPasswordController::class, 'reset'])->name('password.reset');
-    Route::post('/PasswordResetLink',[ForgotPasswordController::class, 'PasswordResetLink']);
 
 });
