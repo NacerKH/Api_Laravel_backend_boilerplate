@@ -25,7 +25,7 @@ Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'
 
     ## Update user informations Profil & Password
     Route::post('/updateUserInformationProfil',[UserController::class, 'update']);
-    Route::post('/updateUserPassword',[UserController::class, 'updatePassword']);
+    Route::post('/updateUserPassword',[UserController::class, 'updatePassword'])->name('user.update.password');
 });
 
 Route::middleware('guest')->group(function () {
