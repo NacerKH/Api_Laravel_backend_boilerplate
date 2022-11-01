@@ -22,17 +22,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');;
     Route::post('/verify-resend', [VerificationController::class, 'resend']);
-    Route::post('/ForgotPassword',ForgotPasswordController::class);
+
     ## Update user informations Profil & Password
     Route::post('/updateUserInformationProfil',[UserController::class, 'update']);
     Route::post('/updateUserPassword',[UserController::class, 'updatePassword']);
 });
 
 Route::middleware('guest')->group(function () {
+    # guest auth
     Route::post('/login', [AuthController::class, 'login'])->name('user.login');
     Route::post('/register', [RegisterController::class,'register'])->name('user.register');
-
-
-    // guest verification (temporary auth)
+    # guest reset password (temporary link)
+    Route::post('/ForgotPassword',[ForgotPasswordController::class, 'reset'])->name('password.reset');
+    Route::post('/PasswordResetLink',[ForgotPasswordController::class, 'PasswordResetLink']);
 
 });

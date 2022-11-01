@@ -15,7 +15,7 @@ use Tests\TestCase;
 class EmailVerficationTest extends TestCase
 {  use RefreshDatabase;
     /**
-     * A basic feature test example.
+     * 
      *  resend email verification
      *
      */
