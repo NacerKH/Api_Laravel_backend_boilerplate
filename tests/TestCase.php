@@ -10,6 +10,7 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
     use DatabaseTransactions;
+    
 
     /**
      * Set up the test case.

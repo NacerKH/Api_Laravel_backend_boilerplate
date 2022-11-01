@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Password;
 use Tests\TestCase;
@@ -42,11 +43,15 @@ class ForgetPasswordTest extends TestCase
     });
      $responseReset = $this->postJson(route('password.reset'), [
         "email" => $user->email,
+        "user" => $user,
         "token" => $token,
         "password" => "newpasswordKali9@skhe",
         "password_confirmation" => "newpasswordKali9@skhe"
     ]);
     $responseReset->assertOk();
+   $user= User::find($user->id);
+
+   $this->assertTrue(Hash::check('newpasswordKali9@skhe',  $user->password));
 
 }
 
