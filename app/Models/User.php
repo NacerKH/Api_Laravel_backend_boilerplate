@@ -12,6 +12,9 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, HasProfilePhoto;
+     const ROLE_ADMIN=1;
+     const ROLE_CLIENT=0;
+
 
     /**
      * The attributes that are mass assignable.
@@ -49,5 +52,29 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $appends = [ 'profile_photo_url'];
+
+
+    public static function roleNameFor($role)
+    {
+     return   match($role) {
+            static::ROLE_ADMIN => 'Admin',
+            static::ROLE_CLIENT=>'Client',
+        };
+    }
+    /**
+     * The attributes that should be cast.
+     *
+     * @var string
+     */
+    public function roleName():string
+    {
+        return static::roleNameFor($this->role);
+    }
+
+    public function IsAdmin():bool
+    {
+        return static::ROLE_ADMIN === $this->role;
+    }
+
 
 }
