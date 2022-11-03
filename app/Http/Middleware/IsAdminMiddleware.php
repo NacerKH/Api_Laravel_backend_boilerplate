@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 
 class IsAdminMiddleware
 {
+
     /**
      * Handle an incoming request.
      *
@@ -20,8 +21,10 @@ class IsAdminMiddleware
     {
         // if ($request->user() && $request->user()->role === User::ROLE_ADMIN)  if u doesnt use table role
         // return $next($request);
- if ($request->user() && $request->user()->roles->first()->slug === User::ROLE_ADMIN)
+
+        if ($request->user() && $request->user()->hasRole('admin') )
         return $next($request);
+        
         return response()->json(['message'=>"Only admin allowed to this route "],Response::HTTP_UNAUTHORIZED);
 
     }
