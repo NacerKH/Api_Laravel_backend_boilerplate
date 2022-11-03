@@ -14,7 +14,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, HasProfilePhoto,HasPermissionsTrait ;
      const ROLE_ADMIN=1;
-     const ROLE_CLIENT=0;
+     const ROLE_USER=0;
 
 
     /**
@@ -59,7 +59,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
      return   match($role) {
             static::ROLE_ADMIN => 'admin',
-            static::ROLE_CLIENT=>'user',
+            static::ROLE_USER=>'user',
         };
     }
     /**

@@ -18,19 +18,9 @@ class RoleTableSeeder extends Seeder
     public function run()
     {
 
-        $data = [
-            [
-                "name"=>"User_Name",
-                "slug" => "user",
 
-            ],
-            [
-                "name"=>"Admin_Name",
-                "slug" => "admin",
-
-            ]
-            ];
-        Role::insert($data);
+        Role::create(["name"=>"User_Name","slug" => "user"]);
+        Role::create(["name"=>"Admin_Name","slug" => "admin"]);
 
         $user_permission = Permission::where('slug','create-tasks')->first();
 		$admin_permission = Permission::where('slug', 'edit-users')->first();
@@ -39,37 +29,22 @@ class RoleTableSeeder extends Seeder
         $admin_role=Role::where('slug','admin')->first();
         $admin_role->permissions()->attach($admin_permission);
 
-        $createTasks = new Permission();
-		$createTasks->slug = 'create-tasks';
-		$createTasks->name = 'Create Tasks';
-		$createTasks->save();
-		$createTasks->roles()->attach($user_role);
+        $createTasks = Permission::create(["name"=> 'Create Tasks',"slug" => 'create-tasks']);
+        $createTasks->roles()->attach($user_role);
 
-		$editUsers = new Permission();
-		$editUsers->slug = 'edit-users';
-		$editUsers->name = 'Edit Users';
-		$editUsers->save();
-		$editUsers->roles()->attach($admin_role);
+		$editUsers = Permission::create(["name"=> 'Edit Users',"slug" => 'edit-users']);
+        $editUsers->roles()->attach($admin_role);
 
 		$user_role = Role::where('slug','user')->first();
 		$admin_role = Role::where('slug', 'admin')->first();
 		$user_perm = Permission::where('slug','create-tasks')->first();
 		$admin_perm = Permission::where('slug','edit-users')->first();
 
-		$user = new User();
-		$user->name = 'Test_User';
-		$user->email = 'test_user@gmail.com';
-		$user->password = bcrypt('1234567');
-		$user->save();
-		$user->roles()->attach($user_role);
+		$user = User::create(["name"=>'Test_User',"email" =>'test_user@gmail.com',"password" => bcrypt('1234567')]);
+        $user->roles()->attach($user_role);
 		$user->permissions()->attach($user_perm);
-
-		$admin = new User();
-		$admin->name = 'Test_Admin';
-		$admin->email = 'test_admin@gmail.com';
-		$admin->password = bcrypt('admin1234');
-		$admin->save();
-		$admin->roles()->attach($admin_role);
+        $admin =  User::create(["name"=>'Test_Admin',"email" =>'test_admin@gmail.com',"password" =>bcrypt('admin1234')]);
+        $admin->roles()->attach($admin_role);
 		$admin->permissions()->attach($admin_perm);
 
     }
