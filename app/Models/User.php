@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Traits\HasPermissionsTrait;
 use App\Http\Traits\HasProfilePhoto;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasProfilePhoto;
+    use HasApiTokens, HasFactory, Notifiable, HasProfilePhoto,HasPermissionsTrait ;
      const ROLE_ADMIN=1;
      const ROLE_CLIENT=0;
 
@@ -57,8 +58,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public static function roleNameFor($role)
     {
      return   match($role) {
-            static::ROLE_ADMIN => 'Admin',
-            static::ROLE_CLIENT=>'Client',
+            static::ROLE_ADMIN => 'admin',
+            static::ROLE_CLIENT=>'user',
         };
     }
     /**
@@ -68,7 +69,8 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function roleName():string
     {
-        return static::roleNameFor($this->role);
+      return static::roleNameFor($this->role);//when doesn't use roles table
+
     }
 
     public function IsAdmin():bool
