@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Authentification;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,8 @@ class RegisterController extends BaseController
         $user = User::create($data);
         if ($user) {
             event(new Registered($user));
+            $user_role = Role::where('slug','user')->first();
+            $user->roles()->attach($user_role);
             $success['token'] =  $user->createToken('auth-token')->plainTextToken;
             $success['name'] =  $user->name;
 
