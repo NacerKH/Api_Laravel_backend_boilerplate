@@ -54,7 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $appends = [ 'profile_photo_url'];
 
-
+################BEGIN_WITHOUT_TABLE_ROLE
     public static function roleNameFor($role)
     {
      return   match($role) {
@@ -77,6 +77,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return static::ROLE_ADMIN === $this->role;
     }
-
+################END_WITHOUT_TABLE_ROLE
 
 }
