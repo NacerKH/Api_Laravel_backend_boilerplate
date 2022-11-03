@@ -20,12 +20,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum','isAdmin')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');;
+    Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->name('admin.verification.verify');;
     Route::post('/verify-resend', [VerificationController::class, 'resend']);
 
     ## Update user informations Profil & Password
-    Route::post('/updateUserInformationProfil',[UserController::class, 'update'])->name('user.updateProfil');
-    Route::post('/updateUserPassword',[UserController::class, 'updatePassword'])->name('user.update.password');
+    Route::post('/updateUserInformationProfil',[UserController::class, 'update'])->name('admin.updateProfil');
+    Route::post('/updateUserPassword',[UserController::class, 'updatePassword'])->name('admin.update.password');
 });
 
 
