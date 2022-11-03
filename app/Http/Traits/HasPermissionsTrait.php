@@ -7,10 +7,17 @@ use App\Models\User;
 use App\Models\Role;
 
 trait HasPermissionsTrait {
+
+    /**
+     * PHP has support for variable-length argument lists in user-defined functions by using the ...
+     *Argument lists may include the ...   to denote that the function accepts a variable number of arguments.
+     *The arguments will be passed into the given variable as an array.
+     * https://www.php.net/manual/en/functions.arguments.php#functions.variable-arg-list
+     */
     public function givePermissionsTo(... $permissions) {
 
         $permissions = $this->getAllPermissions($permissions);
-        dd($permissions);
+
         if($permissions === null) {
           return $this;
         }
