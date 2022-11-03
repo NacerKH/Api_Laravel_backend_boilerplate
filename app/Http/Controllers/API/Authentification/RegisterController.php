@@ -20,13 +20,11 @@ class RegisterController extends BaseController
      */
     public function register(Request $request)
     {
-        $data    = $request->validate([
+        $data = $request->validate([
             "name" => "required|string|min:5",
             "email" => "required|email|unique:users,email",
             "password" => "required|min:8|string|confirmed"
         ]);
-
-
 
 
         $data['password'] = bcrypt($data['password']);
