@@ -55,28 +55,32 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [ 'profile_photo_url'];
 
 ################BEGIN_WITHOUT_TABLE_ROLE
-    public static function roleNameFor($role)
-    {
-     return   match($role) {
-            static::ROLE_ADMIN => 'admin',
-            static::ROLE_USER=>'user',
-        };
-    }
-    /**
-     * The attributes that should be cast.
-     *
-     * @var string
-     */
-    public function roleName():string
-    {
-      return static::roleNameFor($this->role);//when doesn't use roles table
+    // public static function roleNameFor($role)
+    // {
+    //  return   match($role) {
+    //         static::ROLE_ADMIN => 'admin',
+    //         static::ROLE_USER=>'user',
+    //     };
+    // }
+    // /**
+    //  * The attributes that should be cast.
+    //  *
+    //  * @var string
+    //  */
+    // public function roleName():string
+    // {
+    //   return static::roleNameFor($this->role);//when doesn't use roles table
 
-    }
+    // }
+
+    // public function IsAdmin():bool
+    // {
+    //     return static::ROLE_ADMIN === $this->role;
+    // }
+################END_WITHOUT_TABLE_ROLE
 
     public function IsAdmin():bool
     {
-        return static::ROLE_ADMIN === $this->role;
+        return $this->hasRole('admin') ;
     }
-################END_WITHOUT_TABLE_ROLE
-
 }
