@@ -14,8 +14,8 @@ An efficient way to avoid repeated blocks and it saves times ⚡ for Every new p
 - [x] reset password with testing
 - [x] Manage User profil information
 - [x] test  Manage  User profil information
-- [ ] user roles (admin,client)
-- [ ] user permission
+- [x] user roles (admin,client)
+- [x] users and roles permission
 - [ ] login socialite
 
  <hr>
