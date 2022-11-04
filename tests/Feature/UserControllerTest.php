@@ -42,7 +42,7 @@ class UserControllerTest extends TestCase
      */
     public function test_a_user_can_change_his_information_profile()
     {
-    Storage::fake('public');
+    
     $profile_photo= UploadedFile::fake()->image('avatar.jpg');
      $data=[
         'name'=>"kali",
@@ -68,7 +68,7 @@ class UserControllerTest extends TestCase
 
       Storage::disk('public')->assertExists('profile-photos/'.   $New_profile_photo->hashName()); //test exsit file in storage
       $user=User::find($user->id);
-      #check updates data 
+      #check updates data
       $this->assertNotEquals( $user->name,  $data['name']);
       $this->assertNotEquals( $user->email,  $data['email']);
       $this->assertNotEquals( $user->profile_photo_path,  $data['profile_photo_path']);

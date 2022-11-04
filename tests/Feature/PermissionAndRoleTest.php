@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class PermissionAndRoleTest extends TestCase
@@ -48,7 +49,7 @@ class PermissionAndRoleTest extends TestCase
 
     }
     /**
-     * test_that_a_role_gets_a_permission
+     * test_that_a_user_gets_a_role_and_permission
      *
      * @return void
      */
@@ -79,6 +80,29 @@ class PermissionAndRoleTest extends TestCase
             'user_id' =>  $admin->id,
             'permission_id' => $admin_perm->id
         ]);
+
+
+    }
+     /**
+     * test_that_a_role_user_cant_access_to_role_admin
+     *
+     * @return void
+     */
+    public function test_that_a_role_user_cant_access_to_role_admin()
+    {       $this->seed();
+          $user=User::where("name",'Test_User')->first();
+         $this->actingAs($user);
+      $New_profile_photo=UploadedFile::fake()->image('updateimage.jpg');
+
+         $dataToUpdate=[
+            'name'=>"new Name",
+            'email'=>'update@example.com',
+            'profile_photo_path'=> $New_profile_photo
+         ];
+         $response=$this->postJson(route('admin.updateProfil'), $dataToUpdate);
+         $response->assertUnauthorized();
+
+        
 
 
     }
