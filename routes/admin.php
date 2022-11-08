@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Admin\UserController as AdminUserController;
 use App\Http\Controllers\API\Authentification\AuthController;
 use App\Http\Controllers\API\Authentification\ForgotPasswordController;
 use App\Http\Controllers\API\Authentification\RegisterController;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum','isAdmin')->group(function () {
+    Route::apiResource('users',AdminUserController::class);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'])->name('admin.verification.verify');;
     Route::post('/verify-resend', [VerificationController::class, 'resend']);
