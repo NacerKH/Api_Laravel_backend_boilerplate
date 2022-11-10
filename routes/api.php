@@ -4,6 +4,7 @@ use App\Http\Controllers\API\Authentification\AuthController;
 use App\Http\Controllers\API\Authentification\ForgotPasswordController;
 use App\Http\Controllers\API\Authentification\RegisterController;
 use App\Http\Controllers\API\Authentification\Verification\VerificationController;
+use App\Http\Controllers\API\User\SocialController;
 use App\Http\Controllers\API\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,5 +37,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/PasswordResetLink',[ForgotPasswordController::class, 'PasswordResetLink'])->name('PasswordResetLink');
 
     Route::post('/ForgotPassword',[ForgotPasswordController::class, 'reset'])->name('password.reset');
+    Route::get('/redirect/{service}', [SocialController::class, 'redirect'])->name('redirect');
 
+    Route::get('/callback/{service}', [SocialController::class, 'callback'])->name('callback');
 });
