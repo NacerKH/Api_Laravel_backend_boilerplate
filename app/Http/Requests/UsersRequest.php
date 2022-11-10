@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -26,18 +27,19 @@ class UsersRequest extends FormRequest
     public function rules()
     {
 
-    return match ($this->method()) {
+          return match ($this->method()) {
        'POST'=> ["name" => "required|string|min:5",
                  "email" => "required|email|unique:users,email",
                 "password" => "required|min:8|string|confirmed",
-                "role"=> "required",
                 'profile_photo_path' => 'nullable|mimes:jpg,png,jpeg',
                 ],
-        'PUT'=>[
+
+        'PUT','PATCH'=>[
                 "name" => "required|string|min:5",
-                "email" =>  [Rule::unique('users')->ignore($this->user)],
+                "email" => 'required|email|unique:users,email,'. $this->route('user'),
                 'profile_photo_path' => 'nullable|mimes:jpg,png,jpeg'
-                 ]
+        ]
+
                                         };
      }
 }

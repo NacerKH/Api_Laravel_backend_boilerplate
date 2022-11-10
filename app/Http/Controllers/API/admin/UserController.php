@@ -64,7 +64,8 @@ class UserController extends  BaseController
      * @return \Illuminate\Http\Response
      */
     public function update(UsersRequest $request, $id)
-    { $validatedUser = $request->validated();
+    {        
+        $validatedUser = $request->validated();
         $user=User::findOrfail($id);
         $user->update($validatedUser);
         return $this->sendResponse( $user ,'User showed successfully !');
