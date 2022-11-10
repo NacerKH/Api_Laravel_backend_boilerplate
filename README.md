@@ -16,6 +16,25 @@ An efficient way to avoid repeated blocks and it saves times ⚡ for Every new p
 - [x] test  Manage  User profil information
 - [x] user roles (admin,client)
 - [x] users and roles permission
-- [ ] login socialite
+- [x] login socialite
+
+ <hr>
+
+ ## usage :bulb: :
+
+ - `git clone git@github.com:khalifa-dv/Api_Laravel_backend_boilerplate.git` 
+
+- `cd Api_Laravel_backend_boilerplate`
+
+
+- Edit `.env` and set your database connection details 
+
+- app url (include ports in dev) 
+
+- `composer install`
+
+- `php artisan key:generate` :key:
+
+- `php artisan migrate`  
 
  <hr>
