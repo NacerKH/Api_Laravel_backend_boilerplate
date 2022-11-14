@@ -16,12 +16,12 @@ trait SocialiteTrait {
   }
 
    public function signInOrSignUpSocialite( $userSocialite, $user,$service)
-   {
+   {       dd( $userSocialite, $user,$service);
         if (empty( $user)){
           $data= $this->createUserDependService($service,$userSocialite);
            $createUser = User::create($data);
            $createUser->roles()->attach($this->role);
-           Auth::login($createUser);
+        //    Auth::login($createUser);
          return $this->sendResponse([
                'access_token' =>  $this->create_token($createUser),
                'token_type' => 'Bearer',

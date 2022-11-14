@@ -31,13 +31,13 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'facebook' => [
-        'client_id' => env('APP_URL').env ( 'FB_CLIENT_ID' ),
-        'client_secret' => env('APP_URL').env ( 'FB_CLIENT_SECRET' ),
+        'client_id' => env ( 'FB_CLIENT_ID' ),
+        'client_secret' =>env ( 'FB_CLIENT_SECRET' ),
         'redirect' => env('APP_URL').env ( 'FB_REDIRECT' )
     ],
     'google' => [
-        'client_id' => env('APP_URL').env( 'GOOGLE_CLIENT_ID' ),
-        'client_secret' =>  env('APP_URL').env ( 'GOOGLE_CLIENT_SECRET' ),
+        'client_id' => env( 'GOOGLE_CLIENT_ID' ),
+        'client_secret' => env ( 'GOOGLE_CLIENT_SECRET' ),
         'redirect' =>  env('APP_URL').env ( 'GOOGLE_REDIRECT' )
     ],
 ];

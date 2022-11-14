@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use InvalidArgumentException;
@@ -17,18 +18,18 @@ class SocialController extends Controller
 {   use SocialiteTrait;
     public function redirect($service)
     {
-        return Socialite::driver($service)->redirect();
+        return Socialite::driver($service)->stateless()->redirect();
     }
 
-    public function callback($service, Request $request)
-    {
+    public function callback($service)
+    {     
         $userSocialite = Socialite::driver($service)->stateless()->user();
         $facebookUser = User::where('fb_id', $userSocialite->id)->first();
         $googleUser = User::where('google_id',  $userSocialite->id)->first();
         return match($service){
          'facebook'=> $this->signInOrSignUpSocialite( $userSocialite, $facebookUser,'fb'),
          'google'=>   $this->signInOrSignUpSocialite( $userSocialite, $googleUser,'google'),
-         default=> throw new  InvalidArgumentException('No services expected'),
+         default=> throw new  InvalidArgumentException('No services expected',Response::HTTP_NOT_FOUND),
              };
 
 
