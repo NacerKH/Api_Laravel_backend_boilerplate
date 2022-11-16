@@ -29,7 +29,7 @@ Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verify'
     Route::post('/updateUserPassword',[UserController::class, 'updatePassword'])->name('user.update.password');
 });
 
-Route::middleware('guest')->group(function () {
+
     # guest auth
     Route::post('/login', [AuthController::class, 'login'])->name('user.login');
     Route::post('/register', [RegisterController::class,'register'])->name('user.register');
@@ -40,4 +40,4 @@ Route::middleware('guest')->group(function () {
     Route::get('/redirect/{service}', [SocialController::class, 'redirect'])->name('redirect');
 
     Route::get('/callback/{service}', [SocialController::class, 'callback'])->name('callback');
-});
+

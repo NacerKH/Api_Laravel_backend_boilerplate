@@ -18,6 +18,7 @@ class AuthController extends BaseController
             'password' => 'required'
         ]);
 
+
         if (!$this->guard()->attempt($credentials)) {
             return $this->sendError('Unauthorised.', ['error' => 'Unauthorised'], Response::HTTP_UNAUTHORIZED);
         }
@@ -26,6 +27,7 @@ class AuthController extends BaseController
         return $this->sendResponse([
             'access_token' => $token,
             'token_type' => 'Bearer',
+            'user' => auth()->user(),
         ], 'user logged in  Succesfuly');
     }
 

@@ -152,6 +152,7 @@ export const getCurrentUser = () => {
 }
 
 export const setCurrentUser = (user) => {
+    console.log(user);
   try {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user))

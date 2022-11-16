@@ -70,8 +70,8 @@ import { required, email,  maxLength, minLength } from '@vuelidate/validators'
         data() {
             return {
                 form: {
-                    email: "test@coloredstrategies.com",
-                    password: "xxxxxx"
+                    email: "",
+                    password: ""
                 },
             };
         },
@@ -99,8 +99,8 @@ import { required, email,  maxLength, minLength } from '@vuelidate/validators'
             ...mapActions(["login"]),
             formSubmit() {
                 this.v$.$touch();
-                this.form.email = "piaf-vue@coloredstrategies.com";
-                this.form.password = "piaf123";
+                // this.form.email = "piaf-vue@coloredstrategies.com";
+                // this.form.password = "piaf123";
                 this.v$.form.$touch();
                // if (!this.v$.form.$anyError) {
                     this.login({

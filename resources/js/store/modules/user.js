@@ -1,7 +1,9 @@
 
 import { currentUser, isAuthGuardActive } from '../../constants/config'
 import { setCurrentUser, getCurrentUser } from '../../utils'
-
+import useUserLogin from '@/services/user/authentifcation/loginServices'
+import { onMounted } from 'vue';
+const { user, loginUser} = useUserLogin();
 export default {
   state: {
     currentUser: isAuthGuardActive ? getCurrentUser() : currentUser,
@@ -54,26 +56,22 @@ export default {
     }
   },
   actions: {
+
     login({ commit }, payload) {
       commit('clearError')
       commit('setProcessing', true)
-    //   firebase
-    //     .auth()
-    //     .signInWithEmailAndPassword(payload.email, payload.password)
-    //     .then(
-    //       user => {
-    //         const item = { uid: user.user.uid, ...currentUser }
-    //         setCurrentUser(item)
-    //         commit('setUser', item)
-    //       },
-    //       err => {
-    //         setCurrentUser(null);
-    //         commit('setError', err.message)
-    //         setTimeout(() => {
-    //           commit('clearError')
-    //         }, 3000)
-    //       }
-    //     )
+      try{
+        loginUser(payload)
+        }
+     catch (e){
+        setCurrentUser(null);
+        commit('setError', err.message)
+        setTimeout(() => {
+          commit('clearError')
+        }, 3000)
+
+     }
+
     },
     forgotPassword({ commit }, payload) {
       commit('clearError')
