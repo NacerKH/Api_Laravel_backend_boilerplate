@@ -60,18 +60,7 @@ export default {
     login({ commit }, payload) {
       commit('clearError')
       commit('setProcessing', true)
-      try{
         loginUser(payload)
-        }
-     catch (e){
-        setCurrentUser(null);
-        commit('setError', err.message)
-        setTimeout(() => {
-          commit('clearError')
-        }, 3000)
-
-     }
-
     },
      forgotPassword({ commit }, payload) {
     commit('clearError')

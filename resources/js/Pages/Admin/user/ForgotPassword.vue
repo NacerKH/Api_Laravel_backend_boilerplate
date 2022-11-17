@@ -34,7 +34,7 @@
                                 :state="!v$.form.email.$error"
                             />
 
-
+                            
 
                             <b-form-invalid-feedback
                                 v-if="v$.form.$error && v$.form.$errors[0].$validator=='required'"

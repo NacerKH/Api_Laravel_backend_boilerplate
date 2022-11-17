@@ -21,10 +21,14 @@ export default function useUserService() {
             store.commit('setUser', item)
 
         } catch (e) {
-            console.log(e);
-            if (e.response.status === 422) {
-
-                errors.value = e.response.data.errors;
+                    console.log(e.response.data.message)
+            if (e.response.status === 401) {
+                setCurrentUser(null);
+                store.commit('setError', e.response.data.message)
+                setTimeout(() => {
+                    store.commit('clearError')
+                }, 3000)
+                errors.value = e.response.data.message;
             };
 
 
@@ -56,7 +60,7 @@ export default function useUserService() {
             store.commit('setForgotMailSuccess')
 
         } catch (e) {
-            console.log(e.response);
+
             store.commit('setError', e.response.data.message)
             setTimeout(() => {
                 store.commit('clearError')

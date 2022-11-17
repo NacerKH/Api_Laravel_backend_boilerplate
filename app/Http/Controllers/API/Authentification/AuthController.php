@@ -20,7 +20,7 @@ class AuthController extends BaseController
 
 
         if (!$this->guard()->attempt($credentials)) {
-            return $this->sendError('Unauthorised.', ['error' => 'Unauthorised'], Response::HTTP_UNAUTHORIZED);
+            return $this->sendError('Unauthorised.InValid Credientials', ['error' => 'Unauthorised.Invalid Credientials'], Response::HTTP_UNAUTHORIZED);
         }
         $this->guard()->attempt($credentials);
         $token = $this->guard()->user()->createToken('auth-token')->plainTextToken;
