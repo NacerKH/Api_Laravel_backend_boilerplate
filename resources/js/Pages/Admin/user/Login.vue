@@ -1,6 +1,6 @@
 <template>
     <b-row class="h-100">
-        <b-col xxs="12" md="10" class="mx-auto my-auto">
+        <b-colxx xxs="12" md="10" class="mx-auto my-auto">
             <b-card class="auth-card" no-body>
                 <div class="position-relative image-side">
                     <p class="text-white h2">{{ $t('dashboards.magic-is-in-the-details') }}</p>
@@ -52,7 +52,7 @@
                     </b-form>
                 </div>
             </b-card>
-        </b-col>
+        </b-colxx>
     </b-row>
     </template>
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Http\Traits\HasPermissionsTrait;
 use App\Http\Traits\HasProfilePhoto;
+use App\Notifications\MailResetPasswordNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,11 +13,11 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasProfilePhoto,HasPermissionsTrait ;
+    use HasApiTokens, HasFactory, Notifiable, HasProfilePhoto, HasPermissionsTrait;
 
     //unsed
-     const ROLE_ADMIN=1;
-     const ROLE_USER=0;
+    const ROLE_ADMIN = 1;
+    const ROLE_USER = 0;
     //
 
     /**
@@ -57,9 +58,9 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected $appends = [ 'profile_photo_url'];
+    protected $appends = ['profile_photo_url'];
 
-################BEGIN_WITHOUT_TABLE_ROLE
+    ################BEGIN_WITHOUT_TABLE_ROLE
     // public static function roleNameFor($role)
     // {
     //  return   match($role) {
@@ -82,10 +83,16 @@ class User extends Authenticatable implements MustVerifyEmail
     // {
     //     return static::ROLE_ADMIN === $this->role;
     // }
-################END_WITHOUT_TABLE_ROLE
+    ################END_WITHOUT_TABLE_ROLE
 
-    public function IsAdmin():bool
+    public function IsAdmin(): bool
     {
-        return $this->hasRole('admin') ;
+        return $this->hasRole('admin');
+    }
+
+    /** * Override the mail body for reset password notification mail. */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new MailResetPasswordNotification($token));
     }
 }

@@ -1,5 +1,7 @@
 <template>
+
   <user-layout>
+    <notifications  />
     <router-view />
   </user-layout>
 </template>

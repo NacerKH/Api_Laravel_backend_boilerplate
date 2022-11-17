@@ -3,6 +3,8 @@ import './bootstrap';
 import { createApp } from 'vue';
 import router from './router';
 import Login from './Pages/Admin/Login.vue';
+ import Colxx from './components/Common/Colxx.vue'
+
  import BootstrapVue from 'bootstrap-vue-3'
  import store from './store'
 // Multi Language Add
@@ -10,7 +12,7 @@ import en from './locales/en.json'
 import es from './locales/es.json'
 import { createI18n } from 'vue-i18n'
 import 'bootstrap';
-
+import Notifications from '@kyvg/vue3-notification'
 
 
 import BootstrapVue3 from "bootstrap-vue-3";
@@ -38,8 +40,8 @@ const components = import.meta.globEager('./Pages/Admin/user/*.vue')
         app.component(componentName, definition.default)
 
     });
-
-app.use(router).use(BootstrapVue3)
+   app.component("b-colxx",Colxx);
+app.use(router).use(BootstrapVue3).use(Notifications)
 .use(store)
 .use(i18n)
 .mount('#app');

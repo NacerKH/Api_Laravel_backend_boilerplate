@@ -1,9 +1,9 @@
 
 import { currentUser, isAuthGuardActive } from '../../constants/config'
 import { setCurrentUser, getCurrentUser } from '../../utils'
-import useUserLogin from '@/services/user/authentifcation/loginServices'
+import useUserService from '@/services/user/authentifcation/UserServices'
 import { onMounted } from 'vue';
-const { user, loginUser} = useUserLogin();
+const { loginUser,forgetPassword} = useUserService();
 export default {
   state: {
     currentUser: isAuthGuardActive ? getCurrentUser() : currentUser,
@@ -73,9 +73,12 @@ export default {
      }
 
     },
-    forgotPassword({ commit }, payload) {
-      commit('clearError')
-      commit('setProcessing', true)
+     forgotPassword({ commit }, payload) {
+    commit('clearError')
+    commit('setProcessing', true)
+    forgetPassword(payload)
+
+},
     //   firebase
     //     .auth()
     //     .sendPasswordResetEmail(payload.email)
@@ -92,9 +95,9 @@ export default {
     //       }
     //     )
     },
-    resetPassword({ commit }, payload) {
-      commit('clearError')
-      commit('setProcessing', true)
+    // resetPassword({ commit }, payload) {
+    //   commit('clearError')
+    //   commit('setProcessing', true)
     //   firebase
     //     .auth()
     //     .confirmPasswordReset(payload.resetPasswordCode, payload.newPassword)
@@ -110,17 +113,17 @@ export default {
     //         }, 3000)
     //       }
     //     )
-    },
+    // },
 
 
-    signOut({ commit }) {
-    //   firebase
-    //     .auth()
-    //     .signOut()
-    //     .then(() => {
-    //       setCurrentUser(null);
-    //       commit('setLogout')
-    //     }, _error => { })
-    }
-  }
+    // signOut({ commit }) {
+    // //   firebase
+    // //     .auth()
+    // //     .signOut()
+    // //     .then(() => {
+    // //       setCurrentUser(null);
+    // //       commit('setLogout')
+    // //     }, _error => { })
+    // }
+//   }
 }
