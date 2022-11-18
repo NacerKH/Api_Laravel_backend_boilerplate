@@ -58,7 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected $appends = ['profile_photo_url','role'];
+    protected $appends = ['profile_photo_url'];
 
     ################BEGIN_WITHOUT_TABLE_ROLE
     // public static function roleNameFor($role)
