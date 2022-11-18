@@ -1,6 +1,6 @@
 import {
   ThemeColors
-} from "../../utils";
+} from "../../../utils";
 
 const colors = ThemeColors();
 

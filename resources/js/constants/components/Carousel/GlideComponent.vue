@@ -32,7 +32,7 @@ import "@glidejs/glide/dist/css/glide.core.min.css";
 
 import {
     getDirection
-} from '../../utils';
+} from '../../../utils';
 
 export default {
     props: {

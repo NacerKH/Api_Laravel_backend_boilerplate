@@ -6,6 +6,7 @@ export default (to, from, next) => {
       const user = getCurrentUser();
       if (user) {
         const roleArrayHierarchic = to.matched.filter(x => x.meta.roles).map(x => x.meta.roles);
+        console.log(roleArrayHierarchic);
         if (roleArrayHierarchic.every(x => x.includes(user.role))) {
           next();
         } else {

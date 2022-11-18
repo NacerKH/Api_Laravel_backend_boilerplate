@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Chart from "chart.js";
+import Chart from "chart.js/auto";
 import { pieChartOptions } from "./config";
 
 export default {

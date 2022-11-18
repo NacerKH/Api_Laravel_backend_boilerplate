@@ -78,6 +78,7 @@ import useVuelidate from '@vuelidate/core'
 import { required, email,  maxLength, minLength } from '@vuelidate/validators'
 
     import { adminRoot } from '../../../constants/config';
+import router from '@/router';
 
     export default {
         setup () {
@@ -128,11 +129,15 @@ import { required, email,  maxLength, minLength } from '@vuelidate/validators'
         },
         watch: {
             currentUser(val) {
-                if (val && val.uid && val.uid.length > 0) {
+                if (val && val.user && val.user.role =='admin') {
                     setTimeout(() => {
-                        this.$router.push(adminRoot);
+                       router.push(adminRoot);
                     }, 200);
                 }
+                else
+                setTimeout(() => {
+                       router.push(adminRoot);
+                    }, 200);
             },
             loginError(val) {
                 if (val != null) {

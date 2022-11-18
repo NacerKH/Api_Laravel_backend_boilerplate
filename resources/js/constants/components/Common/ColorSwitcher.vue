@@ -61,13 +61,13 @@
 </template>
 
 <script>
-import { colors } from "../../constants/config";
+import { colors } from "../../../constants/config";
 import {
   getThemeRadius,
   setThemeRadius,
   setThemeColor,
   getThemeColor
-} from "../../utils";
+} from "../../../utils";
 export default {
   data() {
     return {

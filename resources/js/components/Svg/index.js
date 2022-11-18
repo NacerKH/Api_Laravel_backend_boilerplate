@@ -1,7 +1,7 @@
-import DataListIcon from './DataListIcon'
-import ThumbListIcon from './ThumbListIcon'
-import ImageListIcon from './ImageListIcon'
-import MenuIcon from './MenuIcon'
-import MobileMenuIcon from './MobileMenuIcon'
+import DataListIcon from './DataListIcon.vue'
+import ThumbListIcon from './ThumbListIcon.vue'
+import ImageListIcon from './ImageListIcon.vue'
+import MenuIcon from './MenuIcon.vue'
+import MobileMenuIcon from './MobileMenuIcon.vue'
 
 export { DataListIcon, ThumbListIcon, ImageListIcon, MenuIcon, MobileMenuIcon }

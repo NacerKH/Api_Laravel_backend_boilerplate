@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Stars from '../Common/Stars'
+import Stars from '../Common/Stars.vue'
 export default {
     components: {
         'stars': Stars

@@ -20,8 +20,10 @@ import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 import "../css/assets/css/vendor/bootstrap.min.css";
 import "../css/assets/css/vendor/dropzone.min.css";
 import "../css/assets/css/sass/main.scss";
-
+import VueScrollTo from 'vue-scrollto'
 import { getCurrentLanguage } from './utils'
+import '@imengyu/vue3-context-menu/lib/vue3-context-menu.css'
+import ContextMenu from '@imengyu/vue3-context-menu'
 var app= createApp();
 const messages = { en: en, es: es };
 const locale = getCurrentLanguage();
@@ -31,17 +33,21 @@ const i18n = createI18n({
     messages
   })
 
-const components = import.meta.globEager('./Pages/Admin/user/*.vue')
+const components = import.meta.globEager('./**/*.vue')
 
     Object.entries(components).forEach(([path, definition]) => {
-
+               
         const componentName = path.split('/').pop().replace(/\.\w+$/, '')
 
         app.component(componentName, definition.default)
 
     });
-   app.component("b-colxx",Colxx);
-app.use(router).use(BootstrapVue3).use(Notifications)
+
+app.use(router)
+.use(BootstrapVue3)
+.use(Notifications)
+.use(VueScrollTo)
+.use(ContextMenu)
 .use(store)
 .use(i18n)
 .mount('#app');

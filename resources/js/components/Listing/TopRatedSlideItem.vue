@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Stars from '../Common/Stars'
+import Stars from '../Common/Stars.vue'
 
 export default {
     props: ['image', 'order', 'title', 'rate', 'rateCount'],

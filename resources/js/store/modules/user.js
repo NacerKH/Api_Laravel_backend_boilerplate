@@ -1,12 +1,12 @@
 
-import { currentUser, isAuthGuardActive } from '../../constants/config'
+import {  isAuthGuardActive } from '../../constants/config'
 import { setCurrentUser, getCurrentUser } from '../../utils'
 import useUserService from '@/services/user/authentifcation/UserServices'
 import { onMounted } from 'vue';
 const { loginUser,forgetPassword} = useUserService();
 export default {
   state: {
-    currentUser: isAuthGuardActive ? getCurrentUser() : currentUser,
+    currentUser: isAuthGuardActive ? getCurrentUser() : null,
     loginError: null,
     processing: false,
     forgotMailSuccess: null,

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import SmallLineChart from "../Charts/SmallLine";
+import SmallLineChart from "../Charts/SmallLine.vue";
 
 export default {
   props: ["labelPrefix", "data"],

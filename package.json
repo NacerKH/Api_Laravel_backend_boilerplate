@@ -13,6 +13,8 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
+        "@glidejs/glide": "^3.6.0",
+        "@imengyu/vue3-context-menu": "^1.1.2",
         "@intlify/vite-plugin-vue-i18n": "^6.0.3",
         "@kyvg/vue3-notification": "^2.6.1",
         "@vitejs/plugin-vue": "^3.2.0",
@@ -20,12 +22,21 @@
         "@vuelidate/validators": "^2.0.0",
         "bootstrap": "^5.2.2",
         "bootstrap-vue-3": "^0.4.8",
+        "chart.js": "^4.0.1",
         "sass": "^1.56.1",
         "scss": "^0.2.4",
+        "video.js": "^7.20.3",
         "vue": "^3.2.36",
+        "vue-headroom": "^0.10.1",
         "vue-i18n": "^9.2.2",
         "vue-loader": "^17.0.1",
+        "vue-radial-progress": "^0.3.2",
         "vue-router": "^4.0.13",
+        "vue-scrollto": "^2.20.0",
+        "vue-select": "^4.0.0-beta.6",
+        "vue-switches": "^2.0.1",
+        "vuedraggable": "^2.24.3",
+        "vuetable-3": "^3.4.3",
         "vuex": "^4.0.2",
         "vuex-persistedstate": "^4.1.0"
     }

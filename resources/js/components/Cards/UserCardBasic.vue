@@ -17,7 +17,7 @@
   </b-card>
 </template>
 <script>
-    import ThumbnailImage from "./ThumbnailImage";
+    import ThumbnailImage from "./ThumbnailImage.vue";
     export default {
         props: ['link', 'data'],
         components: {

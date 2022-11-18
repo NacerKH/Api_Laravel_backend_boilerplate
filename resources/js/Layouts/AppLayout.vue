@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import Sidebar from "../containers/navs/Sidebar";
-import Topnav from "../containers/navs/Topnav";
-import Footer from "../containers/navs/Footer";
+import Sidebar from "../containers/navs/Sidebar.vue";
+import Topnav from "../containers/navs/Topnav.vue";
+import Footer from "../containers/navs/Footer.vue";
 import { mapGetters } from "vuex";
 
 export default {

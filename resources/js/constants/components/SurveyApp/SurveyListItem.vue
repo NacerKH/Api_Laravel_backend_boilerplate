@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { adminRoot } from '../../constants/config'
+import { adminRoot } from '../../../constants/config'
 export default {
   props: ['data', 'selectedItems'],
   data(){

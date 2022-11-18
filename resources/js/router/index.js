@@ -12,6 +12,13 @@ import { UserRole } from "../utils/auth.roles";
 
 
 const routes = [
+
+
+    {
+        path: '/',
+        name: 'home',
+        component:User,
+    },
     {
         path: '/user',
         name: 'Login',
@@ -28,7 +35,8 @@ const routes = [
             },
             {
               path: "forgot-password",
-              component:ForgotPassword
+              component:ForgotPassword,
+              meta: { loginRequired: true,roles:UserRole.Admin },
             },
             {
               path: "reset-password/:token",

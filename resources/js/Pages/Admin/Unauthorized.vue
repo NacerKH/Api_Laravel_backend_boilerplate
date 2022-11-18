@@ -34,7 +34,7 @@
   </div>
 </template>
 <script>
-import { adminRoot } from "../constants/config";
+import { adminRoot } from "../../constants/config";
 export default {
   methods: {
     goBack() {

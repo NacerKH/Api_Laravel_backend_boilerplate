@@ -10,7 +10,7 @@
 
 
 <script>
-import Chart from "chart.js";
+import Chart from "chart.js/auto";
 import { smallLineChartOptions } from "./config";
 import { addCommas } from "./utils";
 export default {
