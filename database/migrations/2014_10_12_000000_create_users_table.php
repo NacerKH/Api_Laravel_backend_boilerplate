@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('profile_photo_path')->nullable();
-            $table->tinyInteger('role')->default(User::ROLE_USER);
+            // $table->tinyInteger('role')->default(User::ROLE_USER);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

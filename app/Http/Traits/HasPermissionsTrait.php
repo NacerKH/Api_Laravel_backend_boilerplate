@@ -84,5 +84,13 @@ trait HasPermissionsTrait {
         return Permission::whereIn('slug',$permissions)->get();
 
       }
+      public function initializeAppendAttributeTrait()
+      {
+          $this->append('role');
+      }
+      public function getRoleAttribute()
+      {
+          return $this->roles()->pluck('slug')->first();
+      }
 
 }
