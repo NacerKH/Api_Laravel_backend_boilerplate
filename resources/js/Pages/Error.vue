@@ -14,9 +14,9 @@
                   <router-link to="/">
                     <span class="logo-single" />
                   </router-link>
-                  <h6 class="mb-4">{{ $t("unauthorized.title") }}</h6>
-                  <p class="mb-0 text-muted text-small mb-0">{{ $t("unauthorized.detail") }}</p>
-                  <p class="display-1 font-weight-bold mb-5">503</p>
+                  <h6 class="mb-4">{{ $t("pages.error-title") }}</h6>
+                  <p class="mb-0 text-muted text-small mb-0">{{ $t("pages.error-code") }}</p>
+                  <p class="display-1 font-weight-bold mb-5">404</p>
                   <b-button
                     type="submit"
                     variant="primary"
@@ -34,11 +34,12 @@
   </div>
 </template>
 <script>
-import { adminRoot } from "../../constants/config";
+import router from '@/router';
+import { adminRoot } from '../constants/config';
 export default {
   methods: {
     goBack() {
-      this.$router.push(adminRoot);
+     router.push(adminRoot);
     },
   },
   mounted: function () {
