@@ -15,7 +15,9 @@
 import Sidebar from "../containers/navs/Sidebar.vue";
 import Topnav from "../containers/navs/Topnav.vue";
 import Footer from "../containers/navs/Footer.vue";
+import { Tooltip } from "bootstrap";
 import { mapGetters } from "vuex";
+
 
 export default {
   components: {
@@ -23,6 +25,7 @@ export default {
     sidebar: Sidebar,
     "footer-component": Footer
   },
+  compatConfig: { MODE: 3 },
   data() {
     return {
       show: false
@@ -35,6 +38,9 @@ export default {
     setTimeout(() => {
       document.body.classList.add("default-transition");
     }, 100);
+    new Tooltip(document.body, {
+  selector: "[data-bs-toggle='tooltip']",
+});
   }
 };
 </script>

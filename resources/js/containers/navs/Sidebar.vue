@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar" @click.stop="()=>{}">
     <div class="main-menu">
-      <vue-perfect-scrollbar
+      <PerfectScrollbar
         class="scroll"
         :settings="{ suppressScrollX: true, wheelPropagation: false }"
       >
@@ -34,11 +34,11 @@
             </router-link>
           </li>
         </ul>
-      </vue-perfect-scrollbar>
+      </PerfectScrollbar>
     </div>
 
     <div class="sub-menu">
-      <vue-perfect-scrollbar
+      <PerfectScrollbar
         class="scroll"
         :settings="{ suppressScrollX: true, wheelPropagation: false }"
       >
@@ -96,13 +96,14 @@
             </router-link>
           </li>
         </ul>
-      </vue-perfect-scrollbar>
+      </PerfectScrollbar>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
+
 import {
   menuHiddenBreakpoint,
   subHiddenBreakpoint,
@@ -139,6 +140,7 @@ export default {
       const currentParentUrl = this.$route.path
         .split("/")
         .filter((x) => x !== "")[1];
+        console.log( currentParentUrl);
       if (currentParentUrl !== undefined || currentParentUrl !== null) {
         this.selectedParentMenu = currentParentUrl.toLowerCase();
       } else {

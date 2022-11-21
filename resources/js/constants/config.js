@@ -1,6 +1,6 @@
 import { UserRole } from "../utils/auth.roles";
 
-export const defaultMenuType = 'menu-default' // 'menu-default', 'menu-sub-hidden', 'menu-hidden';
+export const defaultMenuType = 'menu-sub-hidden' // 'menu-default', 'menu-sub-hidden', 'menu-hidden';
 export const adminRoot = '/Pages/admin/app';
 export const searchPath = `${adminRoot}/#`
 export const buyUrl = 'https://1.envato.market/nEyZa'

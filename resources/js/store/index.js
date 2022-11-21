@@ -8,6 +8,7 @@ import { setCurrentLanguage } from '../utils'
 
 
 
+
 export default createStore({
     plugins:[
         createPersistedState()
@@ -16,7 +17,8 @@ export default createStore({
   },
   mutations: {
     changeLang(state, payload) {
-      app.$i18n.locale = payload
+        console.log(payload);
+        createApp().$i18n.locale = payload
       setCurrentLanguage(payload);
     }
   },

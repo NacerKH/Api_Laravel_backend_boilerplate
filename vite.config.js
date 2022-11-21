@@ -23,13 +23,13 @@ export default defineConfig({
             },
         }),
         vueI18n({
-            include: resolve(dirname(fileURLToPath(import.meta.url)), './path/to/src/locales/**'),
+            include: resolve(dirname(fileURLToPath(import.meta.url)), './resources/js/locales/**'),
           })
     ],
     resolve: {
         alias: {
             vue: 'vue/dist/vue.esm-bundler.js',
-          
+
 
         },
     },

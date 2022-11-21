@@ -4,7 +4,8 @@
         "paths": {
             "@/*": ["resources/js/*"],
             "@assets/*": ["/assets/*"],
-        }
+        },
+        "types": ["@intlify/vite-plugin-vue-i18n/client"]
     },
     "exclude": ["node_modules", "public"]
 }

@@ -38,27 +38,27 @@ export default {
     };
   },
   mounted() {
-    Chart.controllers.lineWithLine = Chart.controllers.line;
-    Chart.controllers.lineWithLine = Chart.controllers.line.extend({
-      draw(ease) {
-        Chart.controllers.line.prototype.draw.call(this, ease);
-        if (this.chart.tooltip._active && this.chart.tooltip._active[0]) {
-          const activePoint = this.chart.tooltip._active[0];
-          const chartCtx = this.chart.ctx;
-          const x = activePoint.tooltipPosition().x;
-          const topY = this.chart.scales["y-axis-0"].top;
-          const bottomY = this.chart.scales["y-axis-0"].bottom;
-          chartCtx.save();
-          chartCtx.beginPath();
-          chartCtx.moveTo(x, topY);
-          chartCtx.lineTo(x, bottomY);
-          chartCtx.lineWidth = 1;
-          chartCtx.strokeStyle = "rgba(0,0,0,0.1)";
-          chartCtx.stroke();
-          chartCtx.restore();
-        }
-      }
-    });
+    // Chart.controllers.lineWithLine = Chart.controllers.line;
+    // Chart.controllers.lineWithLine = Chart.controllers.line.extend({
+    //   draw(ease) {
+    //     Chart.controllers.line.prototype.draw.call(this, ease);
+    //     if (this.chart.tooltip._active && this.chart.tooltip._active[0]) {
+    //       const activePoint = this.chart.tooltip._active[0];
+    //       const chartCtx = this.chart.ctx;
+    //       const x = activePoint.tooltipPosition().x;
+    //       const topY = this.chart.scales["y-axis-0"].top;
+    //       const bottomY = this.chart.scales["y-axis-0"].bottom;
+    //       chartCtx.save();
+    //       chartCtx.beginPath();
+    //       chartCtx.moveTo(x, topY);
+    //       chartCtx.lineTo(x, bottomY);
+    //       chartCtx.lineWidth = 1;
+    //       chartCtx.strokeStyle = "rgba(0,0,0,0.1)";
+    //       chartCtx.stroke();
+    //       chartCtx.restore();
+    //     }
+    //   }
+    // });
     const $that = this;
     const ctx = this.$refs.chart;
     const myChart = new Chart(ctx, {

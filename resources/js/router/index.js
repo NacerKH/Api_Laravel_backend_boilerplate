@@ -2,7 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import Login from '../Pages/Admin/user/Login.vue'
 import ForgotPassword from '../Pages/Admin/user/ForgotPassword.vue'
-import User from '../Pages/Admin/user/index.vue'
+import User from '../Pages/Admin/user/indexUser.vue'
+import home from '../Pages/Admin/app/dashboards/indexDashborad.vue'
+
 import Register from '../Pages/Admin/user/Register.vue'
 import ResetPassword from '../Pages/Admin/user/ResetPassword.vue'
 import AuthGuard from "../utils/auth.guard";
@@ -17,7 +19,7 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component:User,
+        component:home,
     },
     {
         path: '/user',

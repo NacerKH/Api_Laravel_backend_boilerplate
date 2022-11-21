@@ -21,7 +21,7 @@
         @mouseenter="isSearchOver=true"
         @mouseleave="isSearchOver=false"
       >
-        <b-input
+        <b-form-input
           :placeholder="$t('menu.search')"
           @keypress.native.enter="search"
           v-model="searchKeyword"
@@ -48,13 +48,7 @@
           >{{l.name}}</b-dropdown-item>
         </b-dropdown>
       </div>
-      <div class="position-relative d-none d-none d-lg-inline-block">
-        <a
-          class="btn btn-outline-primary btn-sm ml-2"
-          target="_top"
-          :href="buyUrl"
-        >{{$t('user.buy')}}</a>
-      </div>
+
     </div>
     <router-link class="navbar-logo" :to="adminRoot">
       <span class="logo d-none d-xs-block"></span>
@@ -70,7 +64,18 @@
           class="vue-switcher-small"
           color="primary"
         />
-        <b-tooltip target="tool-mode-switch" placement="left" title="Dark Mode"></b-tooltip>
+        <span
+  data-bs-toggle="tooltip"
+  data-bs-placement="bottom"
+  data-bs-html="true"
+  title="Dark Mode"
+  target="tool-mode-switch"
+>
+
+</span>
+        <!-- <v-tooltip  target="tool-mode-switch" placement="left" title="Dark Mode"></v-tooltip > -->
+            <!-- <b-button v-b-tooltip.hover target="tool-mode-switch" placement="left" title="Dark Mode" > -->
+            <!-- </b-button> -->
       </div>
       <div class="header-icons d-inline-block align-middle">
         <div class="position-relative d-none d-sm-inline-block">
@@ -86,27 +91,27 @@
               <i class="simple-icon-grid" />
             </template>
             <div>
-              <router-link to="#" class="icon-menu-item">
+              <router-link :to="`${adminRoot}/dashboards/default`" class="icon-menu-item">
                 <i class="iconsminds-shop-4 d-block" />
                 {{$t('menu.dashboards')}}
               </router-link>
-              <router-link to="#" class="icon-menu-item">
+              <router-link :to="`${adminRoot}/ui`" class="icon-menu-item">
                 <i class="iconsminds-pantone d-block" />
                 {{$t('menu.ui')}}
               </router-link>
-              <router-link to="#" class="icon-menu-item">
+              <router-link :to="`${adminRoot}/ui/components/charts`" class="icon-menu-item">
                 <i class="iconsminds-bar-chart-4 d-block" />
                 {{$t('menu.charts')}}
               </router-link>
-              <router-link to="#" class="icon-menu-item">
+              <router-link :to="`${adminRoot}/applications/chat`" class="icon-menu-item">
                 <i class="iconsminds-speach-bubble d-block" />
                 {{$t('menu.chat')}}
               </router-link>
-              <router-link to="#" class="icon-menu-item">
+              <router-link :to="`${adminRoot}/applications/survey`" class="icon-menu-item">
                 <i class="iconsminds-formula d-block" />
                 {{$t('menu.survey')}}
               </router-link>
-              <router-link to="#" class="icon-menu-item">
+              <router-link :to="`${adminRoot}/applications/todo`" class="icon-menu-item">
                 <i class="iconsminds-check d-block" />
                 {{$t('menu.todo')}}
               </router-link>
@@ -127,13 +132,13 @@
               <i class="simple-icon-bell" />
               <span class="count">3</span>
             </template>
-            <vue-perfect-scrollbar :settings="{ suppressScrollX: true, wheelPropagation: false }">
+            <PerfectScrollbar :settings="{ suppressScrollX: true, wheelPropagation: false }">
               <div
                 class="d-flex flex-row mb-3 pb-3 border-bottom"
                 v-for="(n,index) in notifications"
                 :key="index"
               >
-                <router-link to="#">
+                <router-link :to="`${adminRoot}/pages/product/details`">
                   <img
                     :src="n.img"
                     :alt="n.title"
@@ -141,13 +146,13 @@
                   />
                 </router-link>
                 <div class="pl-3 pr-2">
-                  <router-link to="#">
+                  <router-link :to="`${adminRoot}/pages/product/details`">
                     <p class="font-weight-medium mb-1">{{n.title}}</p>
                     <p class="text-muted mb-0 text-small">{{n.date}}</p>
                   </router-link>
                 </div>
               </div>
-            </vue-perfect-scrollbar>
+            </PerfectScrollbar>
           </b-dropdown>
         </div>
         <div class="position-relative d-none d-sm-inline-block">
@@ -188,6 +193,7 @@
 </template>
 
 <script>
+
 import Switches from "vue-switches";
 import notifications from "../../data/notifications";
 
@@ -207,6 +213,7 @@ export default {
     "mobile-menu-icon": MobileMenuIcon,
     switches: Switches
   },
+  compatConfig: { MODE: 3 },
   data() {
     return {
       searchKeyword: "",
@@ -215,11 +222,11 @@ export default {
       fullScreen: false,
       menuHiddenBreakpoint,
       searchPath,
+      adminRoot,
       localeOptions,
       buyUrl,
       notifications,
-      isDarkActive: false,
-      adminRoot
+      isDarkActive: false
     };
   },
   methods: {
@@ -324,6 +331,7 @@ export default {
     isDarkActive(val) {
       let color = getThemeColor();
       let isChange = false;
+      console.log(isChange )
       if (val && color.indexOf("light") > -1) {
         isChange = true;
         color = color.replace("light", "dark");

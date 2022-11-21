@@ -86,9 +86,11 @@
 </template>
 
 <script>
+  import { defineComponent } from 'vue'
+import { VueDraggableNext } from "vue-draggable-next";
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css'
-import Draggable from 'vuedraggable'
+
 
 const questionTypes = [{ label: 'Text Input', value: 0, options: false },
   { label: 'Single Select', value: 1, options: true },
@@ -100,7 +102,7 @@ export default {
   props: ['data', 'sort'],
   components: {
     'v-select' :vSelect,
-    'draggable' :Draggable
+    'draggable' :VueDraggableNext
   },
   data () {
     return {
