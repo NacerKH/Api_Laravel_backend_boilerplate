@@ -1,12 +1,16 @@
-# API boilerplate  build with laravel 
+# API   & Admin Panel  boilerplate  build with laravel  
 <hr>
 
 ## Description
-An efficient way to avoid repeated blocks and it saves times ⚡ for Every new project  will be created.
+admin panel template build  Vue js Vuex Bootstrap 5  with APi boilerplate Laravel 
+ 
 <hr>
  
  ## Features and Todo's
- 
+ ### Backend 
+ <br>
+ <hr>
+
 - [x] authenfication system 
 - [x] test authenfication system
 - [x] verfied user email
@@ -17,14 +21,20 @@ An efficient way to avoid repeated blocks and it saves times ⚡ for Every new p
 - [x] user roles (admin,client)
 - [x] users and roles permission
 - [x] login socialite
+### FrontEnd 
+- [x]  store data in vuex (User,Language,direction)
+- [x] consume all api backend
+- [x] Middleware Roles 
+- [ ] Manage Users with roles 
+
 
  <hr>
 
  ## usage :bulb: :
 
- - `git clone git@github.com:khalifa-dv/Api_Laravel_backend_boilerplate.git` 
+ - `git clone git@github.com: git@github.com:khalifa-dv/AdminPanel.git` 
 
-- `cd Api_Laravel_backend_boilerplate`
+- `cd AdminPanel`
 
 
 - Edit `.env` and set your database connection details 
@@ -36,5 +46,6 @@ An efficient way to avoid repeated blocks and it saves times ⚡ for Every new p
 - `php artisan key:generate` :key:
 
 - `php artisan migrate`  
+- `npm install`  
 
  <hr>
