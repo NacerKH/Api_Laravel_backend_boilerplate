@@ -25,14 +25,18 @@ export default (to, from, next) => {
     }
   }
   const user = getCurrentUser();
-  console.log(user.role==UserRole.Admin)
+
   if(to.matched.some(record => record.meta.hideForAuth)){
   if (user) {
    if(user.role==UserRole.Admin){
         next(adminRoot)
-    }else{
+    }else if((user.role==UserRole.Editor)){
         next('/')
     }
+
+  }else{
+    next()
+
   }
 }
 

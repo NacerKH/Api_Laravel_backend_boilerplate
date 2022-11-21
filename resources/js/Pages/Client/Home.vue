@@ -14,10 +14,10 @@
 import { computed } from 'vue';
 import {getCurrentUser} from'../../utils'
 import {UserRole} from'../../utils/auth.roles'
- const user=getCurrentUser()
+ const user=getCurrentUser();
 
  const isLogged=  computed(()=>{
-     if(user )
+     if(user != null || user != undefined)
 {
     if( user.role==UserRole.Admin){
       return "You Are Logged Like Admin"
@@ -26,6 +26,8 @@ import {UserRole} from'../../utils/auth.roles'
     }
 
 }
+
+return "Log In Please  "
 
 
  })
