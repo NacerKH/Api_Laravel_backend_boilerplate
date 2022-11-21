@@ -262,6 +262,7 @@ export default {
       }
 
       this.setLang(locale);
+      location.reload()
     },
     logout() {
       this.signOut().then(() => {

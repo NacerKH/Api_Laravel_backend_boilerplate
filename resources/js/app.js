@@ -35,6 +35,9 @@ import bColxx from './components/Common/Colxx.vue'
 import Vuetable from 'vue3-vuetable'
 import vuePerfectScrollbar from 'vue3-perfect-scrollbar'
 import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
+import ShortKey from'vue-shortkey'
+
+
 var app = createApp();
 
 const messages = { en: en, es: es };
@@ -79,6 +82,7 @@ app.use(router)
         }
       })
     .use(store)
+    .use(ShortKey)
     .use(i18n)
     .use(Vuetable)
     .mount('#app');

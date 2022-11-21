@@ -137,16 +137,16 @@ export default {
       "changeSelectedMenuHasSubItems",
     ]),
     selectMenu() {
-      const currentParentUrl = this.$route.path
-        .split("/")
-        .filter((x) => x !== "")[1];
-        console.log( currentParentUrl);
-      if (currentParentUrl !== undefined || currentParentUrl !== null) {
-        this.selectedParentMenu = currentParentUrl.toLowerCase();
-      } else {
-        this.selectedParentMenu = "dashboards";
-      }
-      this.isCurrentMenuHasSubItem();
+    //   const currentParentUrl = this.$route.path
+    //     .split("/")
+    //     .filter((x) => x !== "")[1];
+
+    //   if (currentParentUrl !== undefined || currentParentUrl !== null) {
+    //     this.selectedParentMenu = currentParentUrl.toLowerCase();
+    //   } else {
+    //     this.selectedParentMenu = "dashboards";
+    //   }
+    //   this.isCurrentMenuHasSubItem();
     },
     isCurrentMenuHasSubItem() {
       const menuItem = this.menuItems.find(

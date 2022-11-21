@@ -5,7 +5,8 @@ import createPersistedState from 'vuex-persistedstate'
 import menu from './modules/menu'
 import user from './modules/user'
 import { setCurrentLanguage } from '../utils'
-
+ import  {setupI18n} from'../i18n.js'
+import { createI18n} from 'vue-i18n'
 
 
 
@@ -17,9 +18,10 @@ export default createStore({
   },
   mutations: {
     changeLang(state, payload) {
-        console.log(payload);
-        createApp().$i18n.locale = payload
+
+        setupI18n(payload)
       setCurrentLanguage(payload);
+      
     }
   },
   actions: {
