@@ -24,13 +24,16 @@ export default (to, from, next) => {
       next();
     }
   }
+
+  else if(to.matched.some(record => record.meta.hideForAuth)){
   const user = getCurrentUser();
 
-  if(to.matched.some(record => record.meta.hideForAuth)){
   if (user) {
-   if(user.role==UserRole.Admin){
+    const roleArrayHierarchic = to.matched.filter(x => x.meta.roles).map(x => x.meta.roles);
+   if(roleArrayHierarchic.every(x => x.includes(UserRole.Admin))){
         next(adminRoot)
-    }else if((user.role==UserRole.Editor)){
+    }
+    else if(roleArrayHierarchic.every(x => x.includes(UserRole.Editor))){
         next('/')
     }
 

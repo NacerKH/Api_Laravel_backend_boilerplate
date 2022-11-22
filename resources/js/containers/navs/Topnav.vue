@@ -23,7 +23,7 @@
       >
         <b-form-input
           :placeholder="$t('menu.search')"
-          @keypress.native.enter="search"
+          @keypress.enter="search"
           v-model="searchKeyword"
         />
         <span class="search-icon" @click="searchClick">
@@ -38,7 +38,7 @@
           size="sm"
           toggle-class="language-button"
         >
-          <template slot="button-content">
+          <template v-slot:button-content>
             <span class="name">{{$i18n.locale.toUpperCase()}}</span>
           </template>
           <b-dropdown-item
@@ -57,13 +57,18 @@
 
     <div class="navbar-right">
       <div class="d-none d-md-inline-block align-middle mr-3">
-        <switches
+        <!-- <switches
           id="tool-mode-switch"
           v-model="isDarkActive"
           theme="custom"
           class="vue-switcher-small"
-          color="primary"
-        />
+          color="orange"
+        /> -->
+        <Toggle    id="tool-mode-switch"
+          v-model="isDarkActive"
+          theme="custom"
+          class="vue-switcher-small"
+          color="orange"/>
         <span
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
@@ -87,7 +92,7 @@
             menu-class="position-absolute mt-3 iconMenuDropdown"
             no-caret
           >
-            <template slot="button-content">
+            <template v-slot:button-content>
               <i class="simple-icon-grid" />
             </template>
             <div>
@@ -193,8 +198,10 @@
 </template>
 
 <script>
-
+import Toggle from '@vueform/toggle'
 import Switches from "vue-switches";
+import "@vueform/toggle/themes/default.css";
+import "vue-switches/dist/switches.css";
 import notifications from "../../data/notifications";
 
 import { mapGetters, mapMutations, mapActions } from "vuex";
@@ -203,7 +210,7 @@ import {
   searchPath,
   menuHiddenBreakpoint,
   localeOptions,
-  buyUrl,
+
   adminRoot
 } from "../../constants/config";
 import { getDirection, setDirection, getThemeColor, setThemeColor } from "../../utils";
@@ -211,7 +218,8 @@ export default {
   components: {
     "menu-icon": MenuIcon,
     "mobile-menu-icon": MobileMenuIcon,
-    switches: Switches
+    switches: Switches,
+    Toggle:Toggle
   },
   compatConfig: { MODE: 3 },
   data() {
@@ -224,7 +232,7 @@ export default {
       searchPath,
       adminRoot,
       localeOptions,
-      buyUrl,
+
       notifications,
       isDarkActive: false
     };
@@ -326,13 +334,14 @@ export default {
   watch: {
     "$i18n.locale"(to, from) {
       if (from !== to) {
-        this.$router.go(this.$route.path);
+        this.$router.go(this.$router.currentRoute);
       }
     },
     isDarkActive(val) {
+        console.log(val)
       let color = getThemeColor();
       let isChange = false;
-      console.log(isChange )
+ 
       if (val && color.indexOf("light") > -1) {
         isChange = true;
         color = color.replace("light", "dark");

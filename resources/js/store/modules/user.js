@@ -69,7 +69,7 @@ export default {
 
 },
 signOut({ commit }) {
-    console.log("heloo")
+
     try{
         logOutUser()
         setCurrentUser(null);

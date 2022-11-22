@@ -393,12 +393,6 @@ const data = [{
   label: "menu.blank-page",
   to: `${adminRoot}/blank-page`
 },
-{
-  id: "docs",
-  icon: "iconsminds-library",
-  label: "menu.docs",
-  to: "https://piaf-vue-docs.coloredstrategies.com/",
-  newWindow: true
-}
+
 ];
 export default data;

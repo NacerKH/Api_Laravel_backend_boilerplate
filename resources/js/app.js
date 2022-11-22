@@ -5,7 +5,7 @@ import router from './router';
 
 import Colxx from './components/Common/Colxx.vue'
 
-import BootstrapVue from 'bootstrap-vue-3'
+
 import store from './store'
 // Multi Language Add
 import en from './locales/en.json'
@@ -18,10 +18,13 @@ import Notifications from '@kyvg/vue3-notification'
 import BootstrapVue3 from "bootstrap-vue-3";
 import {vBTooltip} from 'bootstrap-vue-3'
 
+
 import "bootstrap-vue-3/dist/bootstrap-vue-3.css";
 import "../css/assets/css/vendor/bootstrap.min.css";
 import "../css/assets/css/vendor/dropzone.min.css";
-import "../css/assets/css/sass/main.scss";
+import 'video.js/dist/video-js.css'
+
+import { getThemeColor } from "./utils";
 import VueScrollTo from 'vue-scrollto'
 import { getCurrentLanguage } from './utils'
 import '@imengyu/vue3-context-menu/lib/vue3-context-menu.css'
@@ -36,9 +39,15 @@ import Vuetable from 'vue3-vuetable'
 import vuePerfectScrollbar from 'vue3-perfect-scrollbar'
 import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
 import ShortKey from'vue-shortkey'
+var color = getThemeColor();
 
 
+const handlers = {
+  a: await import(`../css/assets/css/sass/themes/piaf.${color}.scss`) // note the .mjs extension, the module format
+}
+handlers.a;
 var app = createApp();
+
 
 const messages = { en: en, es: es };
 const locale = getCurrentLanguage();
