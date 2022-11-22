@@ -3,7 +3,7 @@ import {  isAuthGuardActive } from '../../constants/config'
 import { setCurrentUser, getCurrentUser } from '../../utils'
 import useUserService from '@/services/user/authentifcation/UserServices'
 import { onMounted } from 'vue';
-const { loginUser,forgetPassword} = useUserService();
+const { loginUser,forgetPassword , logOutUser} = useUserService();
 export default {
   state: {
     currentUser: isAuthGuardActive ? getCurrentUser() : null,
@@ -68,6 +68,18 @@ export default {
     forgetPassword(payload)
 
 },
+signOut({ commit }) {
+    console.log("heloo")
+    try{
+        logOutUser()
+        setCurrentUser(null);
+         commit('setLogout')
+    }catch(e){
+
+
+    }
+
+}
     //   firebase
     //     .auth()
     //     .sendPasswordResetEmail(payload.email)

@@ -128,7 +128,7 @@
             menu-class="position-absolute mt-3 notificationDropdown"
             no-caret
           >
-            <template slot="button-content">
+            <template v-slot:button-content>
               <i class="simple-icon-bell" />
               <span class="count">3</span>
             </template>
@@ -174,10 +174,10 @@
           menu-class="mt-3"
           no-caret
         >
-          <template slot="button-content">
-            <span class="name mr-1">{{currentUser.title}}</span>
+          <template v-slot:button-content>
+            <span class="name mr-1">{{currentUser.name}}</span>
             <span>
-              <img :alt="currentUser.title" :src="currentUser.img" />
+              <img :alt="currentUser.title" :src="currentUser.profile_photo_url" />
             </span>
           </template>
           <b-dropdown-item>Account</b-dropdown-item>

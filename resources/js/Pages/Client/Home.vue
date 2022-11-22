@@ -6,6 +6,7 @@
     </div>
     <h1 class="d-flex  p-2 justify-content-center font-bold mt-4">
         <router-link :to="'/user'" class="btn btn-primary">{{isLogged}}</router-link>
+        <a class="btn btn-secondary" v-if="user" v-on:click="logout()">LogOut</a>
 </h1>
 </template>
 
@@ -14,8 +15,12 @@
 import { computed } from 'vue';
 import {getCurrentUser} from'../../utils'
 import {UserRole} from'../../utils/auth.roles'
+import {  mapActions } from '../../utils/map-state.js'
+const {signOut} =mapActions();
  const user=getCurrentUser();
 
+
+ const module = 'user';
  const isLogged=  computed(()=>{
      if(user != null || user != undefined)
 {
@@ -24,11 +29,16 @@ import {UserRole} from'../../utils/auth.roles'
     }else{
         return "You Are Logged Like Client"
     }
-
 }
 
 return "Log In Please  "
 
 
  })
+
+
+  console.log(signOut)
+ const logout=()=>{
+    signOut()
+ }
 </script>

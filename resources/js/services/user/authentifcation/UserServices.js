@@ -90,9 +90,26 @@ export default function useUserService() {
 
     // }
 
-    // const logOutUser=async ()=>{
+    const logOutUser=async ()=>{
+        errors.value = ''
+        try {
 
-    // }
+
+        let response = await axios.post('/api/logout');
+          console.log(response);
+        store.setCurrentUser(null);
+        store.commit('setLogout')
+    } catch (e) {
+         store.commit('setError', e.response.data.message)
+         setTimeout(() => {
+            store.commit('clearError')
+        }, 3000)
+        if (e.response.status === 404) {
+
+            errors.value = e.response.data.errors;
+        };
+    }
+}
 
 
 
@@ -106,7 +123,8 @@ export default function useUserService() {
     return {
         user,
         loginUser,
-        forgetPassword
+        forgetPassword,
+        logOutUser
 
 
     }
