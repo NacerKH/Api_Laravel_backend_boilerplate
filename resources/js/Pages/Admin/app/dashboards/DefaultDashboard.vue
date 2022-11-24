@@ -106,8 +106,8 @@
 </template>
 
 <script>
-// import GradientCard from "../../../../components/Cards/GradientCard.vue";
-// import GradientWithRadialProgressCard from "../../../../components/Cards/GradientWithRadialProgressCard.vue";
+import GradientCard from "../../../../components/Cards/GradientCard.vue";
+ import GradientWithRadialProgressCard from "../../../../components/Cards/GradientWithRadialProgressCard.vue";
 import AdvancedSearch from "../../../../containers/dashboards/AdvancedSearch.vue";
 import BestSellers from "../../../../containers/dashboards/BestSellers.vue";
  import Cakes from "../../../../containers/dashboards/Cakes.vue";
@@ -143,8 +143,9 @@ export default {
     "sortable-statictics-row": SortableStaticticsRow,
     "top-rated-items": TopRatedItems,
     "website-visit-chart-card": WebsiteVisitsChartCard,
-    // "gradient-card": GradientCard,
-    // "gradient-with-radial-progress-card": GradientWithRadialProgressCard
+     "gradient-card": GradientCard,
+
+     "gradient-with-radial-progress-card": GradientWithRadialProgressCard
   }
 };
 </script>

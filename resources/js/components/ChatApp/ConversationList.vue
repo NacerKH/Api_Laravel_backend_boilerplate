@@ -1,5 +1,5 @@
 <template>
-  <vue-perfect-scrollbar
+  <PerfectScrollbar
     class="scroll"
     :settings="{ suppressScrollX: true, wheelPropagation: false }"
   >
@@ -28,7 +28,7 @@
         </a>
       </div>
     </div>
-  </vue-perfect-scrollbar>
+  </PerfectScrollbar>
 </template>
 
 <script>

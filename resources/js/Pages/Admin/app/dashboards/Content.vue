@@ -68,8 +68,8 @@
 </template>
 
 <script>
-// import BestSellers from "../../../../containers/dashboards/BestSellers.vue";
-// import Cakes from "../../../../containers/dashboards/Cakes.vue";
+ import BestSellers from "../../../../containers/dashboards/BestSellers.vue";
+ import Cakes from "../../../../containers/dashboards/Cakes.vue";
 import ConversionRatesChartCard from "../../../../containers/dashboards/ConversionRatesChartCard.vue";
 import IconCardsCarousel from "../../../../containers/dashboards/IconCardsCarousel.vue";
 import NewComments from "../../../../containers/dashboards/NewComments.vue";
@@ -79,8 +79,8 @@ import GradientWithRadialProgressCard from "../../../../components/Cards/Gradien
 
 export default {
   components: {
-    // "best-sellers": BestSellers,
-    // cakes: Cakes,
+     "best-sellers": BestSellers,
+     "cakes": Cakes,
     "converconversion-rates-chart-card": ConversionRatesChartCard,
     "icon-cards-carousel": IconCardsCarousel,
     "new-comments": NewComments,

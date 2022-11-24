@@ -3,7 +3,7 @@
         <topnav />
         <sidebar />
         <main>
-            <div class="loading"></div>
+            <!-- <div class="loading"></div> -->
             <div class="container-fluid">
                 <slot></slot>
             </div>
@@ -38,9 +38,7 @@ export default {
         setTimeout(() => {
             document.body.classList.add("default-transition");
         }, 100);
-        new Tooltip(document.body, {
-            selector: "[data-bs-toggle='tooltip']",
-        });
+    
     },
 };
 </script>

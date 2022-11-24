@@ -1,6 +1,6 @@
 <template>
   <application-menu>
-    <vue-perfect-scrollbar :settings="{ suppressScrollX: true, wheelPropagation: false }">
+    <PerfectScrollbar :settings="{ suppressScrollX: true, wheelPropagation: false }">
       <div class="p-4">
         <p class="text-muted text-small mb-3">{{$t('survey.status')}}</p>
         <ul class="list-unstyled mb-4">
@@ -43,7 +43,7 @@
           </p>
         </div>
       </div>
-    </vue-perfect-scrollbar>
+    </PerfectScrollbar>
   </application-menu>
 </template>
 

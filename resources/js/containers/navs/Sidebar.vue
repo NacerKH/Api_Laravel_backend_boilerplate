@@ -26,7 +26,7 @@
             </a>
             <router-link
               v-else
-              @click.native="changeSelectedParentHasNoSubmenu(item.id)"
+              @click="changeSelectedParentHasNoSubmenu(item.id)"
               :to="item.to"
             >
               <i :class="item.icon" />
@@ -137,16 +137,16 @@ export default {
       "changeSelectedMenuHasSubItems",
     ]),
     selectMenu() {
-    //   const currentParentUrl = this.$route.path
-    //     .split("/")
-    //     .filter((x) => x !== "")[1];
+      const currentParentUrl = this.$route.path
+        .split("/")
+        .filter((x) => x !== "")[1];
 
-    //   if (currentParentUrl !== undefined || currentParentUrl !== null) {
-    //     this.selectedParentMenu = currentParentUrl.toLowerCase();
-    //   } else {
-    //     this.selectedParentMenu = "dashboards";
-    //   }
-    //   this.isCurrentMenuHasSubItem();
+      if (currentParentUrl !== undefined || currentParentUrl !== null) {
+        this.selectedParentMenu = currentParentUrl.toLowerCase();
+      } else {
+        this.selectedParentMenu = "dashboards";
+      }
+      this.isCurrentMenuHasSubItem();
     },
     isCurrentMenuHasSubItem() {
       const menuItem = this.menuItems.find(

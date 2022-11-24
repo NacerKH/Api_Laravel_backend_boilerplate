@@ -1,10 +1,11 @@
 import { UserRole } from "../utils/auth.roles";
 
 export const defaultMenuType = 'menu-sub-hidden' // 'menu-default', 'menu-sub-hidden', 'menu-hidden';
-export const adminRoot = '/admin/dashboard';
+export const adminRoot = '/admin';
 export const searchPath = `${adminRoot}/#`
-export const buyUrl = ''
-export const apiUrl = '';
+export const   Url = ''
+export const apiUrl = 'https://api.coloredstrategies.com';
+
 
 export const subHiddenBreakpoint = 1440
 export const menuHiddenBreakpoint = 768

@@ -1,11 +1,11 @@
 <template>
   <b-card :title="$t('dashboards.logs')">
-    <vue-perfect-scrollbar
+    <PerfectScrollbar
       class="dashboard-logs scroll"
       :settings="{ suppressScrollX: true, wheelPropagation: false }"
     >
       <log-list :logs="logs" />
-    </vue-perfect-scrollbar>
+    </PerfectScrollbar>
   </b-card>
 </template>
 <script>

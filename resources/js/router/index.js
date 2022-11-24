@@ -4,13 +4,15 @@ import Login from '../Pages/Admin/user/Login.vue'
 import ForgotPassword from '../Pages/Admin/user/ForgotPassword.vue'
 import User from '../Pages/Admin/user/indexUser.vue'
 import home from '../Pages/Client/Home.vue'
-import dashboard from '../Pages/Admin/app/index.vue'
+import dashboard from '../Pages/Admin/app/dashboards/indexDashboard.vue'
 
 import Register from '../Pages/Admin/user/Register.vue'
 import ResetPassword from '../Pages/Admin/user/ResetPassword.vue'
 import AuthGuard from "../utils/auth.guard";
 import { adminRoot } from "../constants/config";
 import { UserRole } from "../utils/auth.roles";
+import DefaultDashboards from "../Pages/Admin/app/dashboards/DefaultDashboard.vue"
+import Analytics from "../Pages/Admin/app/dashboards/Analytics.vue"
 import Error from'../Pages/Error.vue'
 
 
@@ -54,17 +56,22 @@ const routes = [
     },
     ,
     {
-        path: '/admin',
+        path:`${adminRoot}/dashboards`,
         name: 'admin',
-        component:User,
+        component:dashboard,
         meta: { loginRequired: true, roles: UserRole.Admin },
-        redirect: "/admin/dashboard",
+        redirect: `${adminRoot}/dashboards/default`,
         children: [
             {
-              path: "dashboard",
-              component: dashboard,
+              path: "default",
+              component: DefaultDashboards,
               meta: { loginRequired: true, roles: UserRole.Admin },
             },
+            {
+                path: "analytics",
+                component: Analytics,
+                meta: { loginRequired: true, roles: UserRole.Admin },
+              },
 
           ]
     },

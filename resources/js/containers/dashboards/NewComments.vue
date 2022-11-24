@@ -1,6 +1,6 @@
 <template>
   <b-card :title="$t('dashboards.new-comments')" class="dashboard-link-list">
-    <vue-perfect-scrollbar
+    <PerfectScrollbar
       class="scroll dashboard-list-with-user"
       :settings="{ suppressScrollX: true, wheelPropagation: false }"
     >
@@ -10,7 +10,7 @@
         detail-path="#"
         :key="index"
       />
-    </vue-perfect-scrollbar>
+    </PerfectScrollbar>
   </b-card>
 </template>
 <script>

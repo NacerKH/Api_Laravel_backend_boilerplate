@@ -1,7 +1,7 @@
 <template>
   <b-card :title="$t('dashboards.recent-orders')">
     <b-refresh-button @click="refreshButtonClick" />
-    <vue-perfect-scrollbar
+    <PerfectScrollbar
       class="scroll dashboard-list-with-thumbs"
       :settings="{ suppressScrollX: true, wheelPropagation: false }"
     >
@@ -11,7 +11,7 @@
         detail-path="#"
         :key="index"
       />
-    </vue-perfect-scrollbar>
+    </PerfectScrollbar>
   </b-card>
 </template>
 <script>

@@ -64,38 +64,47 @@ export const polarAreaChartOptions = {
 }
 
 export const areaChartOptions = {
-  legend: {
-    display: false
-  },
-  responsive: true,
-  maintainAspectRatio: false,
-  tooltips: chartTooltip,
+    plugins: {
+
+        legend: {
+            display: false
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+          tooltip: chartTooltip,
+    },
+
   scales: {
-    yAxes: [
+    y:
       {
-        gridLines: {
+        grid: {
           display: true,
           lineWidth: 1,
           color: 'rgba(0,0,0,0.1)',
           drawBorder: false
-        },
-        ticks: {
-          beginAtZero: true,
-          stepSize: 5,
-          min: 50,
-          max: 70,
-          padding: 20
-        }
+        }, ticks: {
+
+            stepSize: 5,
+            min: 50,
+            max: 70,
+            padding: 20,
+
+
+          },
+
       }
-    ],
-    xAxes: [
+    ,
+    x:
       {
-        gridLines: {
+        grid: {
           display: false
         }
-      }
-    ]
-  }
+      },
+
+
+  },
+
+   beginAtZero: true,
 }
 
 export const scatterChartOptions = {

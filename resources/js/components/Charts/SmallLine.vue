@@ -59,39 +59,39 @@ export default {
     //     }
     //   }
     // });
-    const $that = this;
-    const ctx = this.$refs.chart;
-    const myChart = new Chart(ctx, {
-      type: "lineWithLine",
-      data: this.data,
-      plugins: [
-        {
-          afterInit: function(chart, options) {
-            const yLabel = chart.data.datasets[0].data[0];
-            const xLabel = chart.data.labels[0];
-            const label = chart.data.datasets[0].label;
-            $that.changeLabels(label + "-" + xLabel, yLabel);
-          }
-        }
-      ],
-      options: Object.assign(
-        { ...smallLineChartOptions },
-        {
-          tooltips: {
-            intersect: false,
-            enabled: false,
-            custom: function(tooltipModel, data) {
-              if (tooltipModel && tooltipModel.dataPoints) {
-                const yLabel = tooltipModel.dataPoints[0].yLabel;
-                const xLabel = tooltipModel.dataPoints[0].xLabel;
-                const label = tooltipModel.body[0].lines[0].split(":")[0];
-                $that.changeLabels(label + "-" + xLabel, yLabel);
-              }
-            }
-          }
-        }
-      )
-    });
+    // const $that = this;
+    // const ctx = this.$refs.chart;
+    // const myChart = new Chart(ctx, {
+    //   type: "lineWithLine",
+    //   data: this.data,
+    //   plugins: [
+    //     {
+    //       afterInit: function(chart, options) {
+    //         const yLabel = chart.data.datasets[0].data[0];
+    //         const xLabel = chart.data.labels[0];
+    //         const label = chart.data.datasets[0].label;
+    //         $that.changeLabels(label + "-" + xLabel, yLabel);
+    //       }
+    //     }
+    //   ],
+    //   options: Object.assign(
+    //     { ...smallLineChartOptions },
+    //     {
+    //       tooltips: {
+    //         intersect: false,
+    //         enabled: false,
+    //         custom: function(tooltipModel, data) {
+    //           if (tooltipModel && tooltipModel.dataPoints) {
+    //             const yLabel = tooltipModel.dataPoints[0].yLabel;
+    //             const xLabel = tooltipModel.dataPoints[0].xLabel;
+    //             const label = tooltipModel.body[0].lines[0].split(":")[0];
+    //             $that.changeLabels(label + "-" + xLabel, yLabel);
+    //           }
+    //         }
+    //       }
+    //     }
+    //   )
+    // });
   },
   methods: {
     changeLabels(x, y) {

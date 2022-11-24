@@ -1,5 +1,5 @@
 <template>
-    <vue-perfect-scrollbar :settings="{ suppressScrollX: true, wheelPropagation: false }"  >
+    <PerfectScrollbar :settings="{ suppressScrollX: true, wheelPropagation: false }"  >
         <div class="pt-0 spaced-content pb-0">
             <div class="d-flex flex-row mb-3 border-bottom pb-3" v-for="(contact,index) in data" :key="`contact${index}`">
                 <a class="d-flex" href="#" @click.prevent="selectContact(contact.id)">
@@ -14,7 +14,7 @@
                 </a>
             </div>
         </div>
-    </vue-perfect-scrollbar>
+    </PerfectScrollbar>
 </template>
 
 <script>

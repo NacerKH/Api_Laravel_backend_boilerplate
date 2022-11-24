@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="separator mb-5" />
-    <vue-perfect-scrollbar
+    <PerfectScrollbar
       class="scroll"
       :settings="{ suppressScrollX: true, wheelPropagation: false }"
       ref="chatArea"
@@ -88,7 +88,7 @@
         </b-card>
         <div class="clearfix" />
       </div>
-    </vue-perfect-scrollbar>
+    </PerfectScrollbar>
   </div>
 </template>
 <script>
