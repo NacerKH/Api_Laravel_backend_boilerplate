@@ -19,18 +19,18 @@ const data = [{
     to: `${adminRoot}/dashboards/analytics`,
     // roles: [UserRole.Admin],
   },
-//   {
-//     icon: "simple-icon-basket-loaded",
-//     label: "menu.ecommerce",
-//     to: `${adminRoot}/dashboards/ecommerce`,
-//     // roles: [UserRole.Editor],
-//   },
-//   {
-//     icon: "simple-icon-doc",
-//     label: "menu.content",
-//     to: `${adminRoot}/dashboards/content`,
-//     // roles: [UserRole.Editor],
-//   }
+  {
+    icon: "simple-icon-basket-loaded",
+    label: "menu.ecommerce",
+    to: `${adminRoot}/dashboards/ecommerce`,
+    // roles: [UserRole.Editor],
+  },
+  {
+    icon: "simple-icon-doc",
+    label: "menu.content",
+    to: `${adminRoot}/dashboards/content`,
+   // roles: [UserRole.Editor],
+  }
   ]
 },
 // {
@@ -393,6 +393,41 @@ const data = [{
 //   label: "menu.blank-page",
 //   to: `${adminRoot}/blank-page`
 // },
+,
+{
+  id: "users",
+  icon: "iconsminds-conference",
+  label: "menu.users",
+  to: `${adminRoot}/users`,
+  subs: [
+    {
+      id: "ui-forms",
+      label: "menu.forms",
+      to: `${adminRoot}/ui/forms`,
+      subs: [{
+        icon: "simple-icon-notebook",
+        label: "menu.layouts",
+        to: `${adminRoot}/ui/forms/layouts`
+      },
+      {
+        icon: "simple-icon-puzzle",
+        label: "menu.components",
+        to: `${adminRoot}/ui/forms/components`
+      },
+      {
+        icon: "simple-icon-check",
+        label: "menu.validations",
+        to: `${adminRoot}/ui/forms/validations`
+      },
+      {
+        icon: "simple-icon-magic-wand",
+        label: "menu.wizard",
+        to: `${adminRoot}/ui/forms/wizard`
+      }
+      ]
+    },
+]
+},
 
 ];
 export default data;

@@ -13,6 +13,8 @@ import { adminRoot } from "../constants/config";
 import { UserRole } from "../utils/auth.roles";
 import DefaultDashboards from "../Pages/Admin/app/dashboards/DefaultDashboard.vue"
 import Analytics from "../Pages/Admin/app/dashboards/Analytics.vue"
+import content from "../Pages/Admin/app/dashboards/content.vue"
+import ecommerce from "../Pages/Admin/app/dashboards/ecommerce.vue"
 import Error from'../Pages/Error.vue'
 
 
@@ -72,7 +74,16 @@ const routes = [
                 component: Analytics,
                 meta: { loginRequired: true, roles: UserRole.Admin },
               },
-
+              {
+                path: "ecommerce",
+                component: ecommerce,
+                meta: { loginRequired: true, roles: UserRole.Admin },
+              },
+              {
+                path: "content",
+                component: content,
+                meta: { loginRequired: true, roles: UserRole.Admin },
+              },
           ]
     },
     {
