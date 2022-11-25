@@ -5,30 +5,30 @@ const data = [{
   id: "dashboards",
   icon: "iconsminds-shop-4",
   label: "menu.dashboards",
-  to: `${adminRoot}/dashboards`,
+  to: `${adminRoot}`,
   // roles: [UserRole.Admin, UserRole.Editor],
   subs: [{
     icon: "simple-icon-briefcase",
     label: "menu.default",
-    to: `${adminRoot}/dashboards/default`,
+    to: `${adminRoot}/default`,
      roles: [UserRole.Admin],
   },
   {
     icon: "simple-icon-pie-chart",
     label: "menu.analytics",
-    to: `${adminRoot}/dashboards/analytics`,
+    to: `${adminRoot}/analytics`,
     // roles: [UserRole.Admin],
   },
   {
     icon: "simple-icon-basket-loaded",
     label: "menu.ecommerce",
-    to: `${adminRoot}/dashboards/ecommerce`,
+    to: `${adminRoot}/ecommerce`,
     // roles: [UserRole.Editor],
   },
   {
     icon: "simple-icon-doc",
     label: "menu.content",
-    to: `${adminRoot}/dashboards/content`,
+    to: `${adminRoot}/content`,
    // roles: [UserRole.Editor],
   }
   ]

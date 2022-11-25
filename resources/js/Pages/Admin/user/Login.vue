@@ -136,7 +136,7 @@ import router from '@/router';
                 }
                 else
                 setTimeout(() => {
-                       router.push(adminRoot);
+                       router.push('/');
                     }, 200);
             },
             loginError(val) {

@@ -3,8 +3,22 @@ import {  isAuthGuardActive } from '../../constants/config'
 import { setCurrentUser, getCurrentUser } from '../../utils'
 import useUserService from '@/services/user/authentifcation/UserServices'
 import { onMounted } from 'vue';
+import createPersistedState from 'vuex-persistedstate'
+
+import Cookies from 'js-cookie'
 const { loginUser,forgetPassword , logOutUser} = useUserService();
 export default {
+    plugins:[
+        createPersistedState({
+            paths: ['currentUser'],
+            storage: {
+                getItem: (key) => Cookies.get(key),
+                setItem: (key, value) =>
+                Cookies.set(key, value, { expires: 7}),
+                removeItem: (key) => Cookies.remove(key),
+            },
+        }),
+    ],
   state: {
     currentUser: isAuthGuardActive ? getCurrentUser() : null,
     loginError: null,

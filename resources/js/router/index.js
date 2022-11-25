@@ -58,11 +58,11 @@ const routes = [
     },
     ,
     {
-        path:`${adminRoot}/dashboards`,
+        path:`${adminRoot}`,
         name: 'admin',
         component:dashboard,
         meta: { loginRequired: true, roles: UserRole.Admin },
-        redirect: `${adminRoot}/dashboards/default`,
+        redirect: `${adminRoot}/default`,
         children: [
             {
               path: "default",
@@ -92,7 +92,7 @@ const routes = [
       },
       {
         path: "/unauthorized",
-        component: () => import(/* webpackChunkName: "error" */ "../Pages/Unauthorized.vue")
+        component: () => import(/* webpackChunkName: "unauthorized" */ "../Pages/Unauthorized.vue")
       },
     // {
     //     path: "*",

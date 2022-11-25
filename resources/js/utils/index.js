@@ -1,5 +1,6 @@
 import { defaultDirection, defaultColor, themeSelectedColorStorageKey, themeRadiusStorageKey, localeOptions, defaultLocale } from '../constants/config'
 
+import Cookies from 'js-cookie'
 
 
 export const mapOrder = (array, order, key) => {
@@ -144,6 +145,7 @@ export const getCurrentUser = () => {
   let user = null;
   try {
     user = localStorage.getItem('user') != null ? JSON.parse(localStorage.getItem('user')) : null;
+
   } catch (error) {
     console.log(">>>> src/utils/index.js : getCurrentUser -> error", error)
     user = null;
@@ -152,7 +154,7 @@ export const getCurrentUser = () => {
 }
 
 export const setCurrentUser = (user) => {
-    console.log(user);
+
   try {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user))

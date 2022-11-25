@@ -7,12 +7,20 @@ import user from './modules/user'
 import { setCurrentLanguage } from '../utils'
  import  {setupI18n} from'../i18n.js'
 import { createI18n} from 'vue-i18n'
-
+import Cookies from 'js-cookie'
 
 
 export default createStore({
     plugins:[
-        createPersistedState()
+        createPersistedState({
+            paths: ['currentUser','user'],
+            storage: {
+                getItem: (key) => Cookies.get(key),
+                setItem: (key, value) =>
+                Cookies.set(key, value, { expires: 7}),
+                removeItem: (key) => Cookies.remove(key),
+            },
+        })
     ],
   state: {
   },
@@ -21,7 +29,7 @@ export default createStore({
 
         setupI18n(payload)
       setCurrentLanguage(payload);
-      
+
     }
   },
   actions: {

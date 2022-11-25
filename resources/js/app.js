@@ -13,7 +13,7 @@ import es from './locales/es.json'
 import { createI18n } from 'vue-i18n'
 import 'bootstrap';
 import Notifications from '@kyvg/vue3-notification'
-
+import velocity      from 'velocity-animate'
 
 import BootstrapVue3 from "bootstrap-vue-3";
 import {vBTooltip} from 'bootstrap-vue-3'
@@ -81,7 +81,7 @@ app.use(router)
     .use(BootstrapVue3)
 
 
-    .use(Notifications)
+    .use(Notifications,{ velocity })
     .use(VueScrollTo)
     .use(ContextMenu)
     .use(vuePerfectScrollbar, {

@@ -31,7 +31,7 @@ export default (to, from, next) => {
   if (user) {
     const roleArrayHierarchic = to.matched.filter(x => x.meta.roles).map(x => x.meta.roles);
    if(roleArrayHierarchic.every(x => x.includes(UserRole.Admin))){
-        next(adminRoot)
+        next(`${adminRoot}`)
     }
     else if(roleArrayHierarchic.every(x => x.includes(UserRole.Editor))){
         next('/')

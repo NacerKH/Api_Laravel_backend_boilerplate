@@ -1,7 +1,7 @@
 <template>
 
   <user-layout>
-    <notifications  />
+    <notifications  animation-type="velocity"/>
     <router-view />
   </user-layout>
 </template>

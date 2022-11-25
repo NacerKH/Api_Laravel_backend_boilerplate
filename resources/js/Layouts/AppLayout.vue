@@ -2,6 +2,7 @@
     <div id="app-container" :class="getMenuType">
         <topnav />
         <sidebar />
+        <notifications  animation-type="velocity"/>
         <main>
             <!-- <div class="loading"></div> -->
             <div class="container-fluid">
@@ -38,7 +39,7 @@ export default {
         setTimeout(() => {
             document.body.classList.add("default-transition");
         }, 100);
-    
+
     },
 };
 </script>

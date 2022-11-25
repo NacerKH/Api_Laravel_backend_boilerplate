@@ -4,7 +4,7 @@ import axios from "axios";
 import { ref } from "vue";
 import { useNotification } from "@kyvg/vue3-notification";
 
-const notification = useNotification()
+const { notify}  = useNotification()
 
 
 export default function useUserService() {
@@ -97,16 +97,23 @@ export default function useUserService() {
 
         let response = await axios.post('/api/logout');
           console.log(response);
-        store.setCurrentUser(null);
+            setCurrentUser(null);
         store.commit('setLogout')
     } catch (e) {
-         store.commit('setError', e.response.data.message)
-         setTimeout(() => {
-            store.commit('clearError')
-        }, 3000)
-        if (e.response.status === 404) {
 
+                 console.log(e.response.status)
+        if (e.response.status === 401) {
+            store.commit('setError', e.response.data.message)
+            setTimeout(() => {
+               store.commit('clearError')
+           }, 3000)
             errors.value = e.response.data.errors;
+            notify(
+                {
+                    type:"error",
+                    text:   ` ${e.response.data.message}`  ,
+                    duration: 3000,
+                    });
         };
     }
 }

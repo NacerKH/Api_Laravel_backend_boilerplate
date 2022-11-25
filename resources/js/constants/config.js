@@ -1,7 +1,7 @@
 import { UserRole } from "../utils/auth.roles";
 
 export const defaultMenuType = 'menu-sub-hidden' // 'menu-default', 'menu-sub-hidden', 'menu-hidden';
-export const adminRoot = '/admin';
+export const adminRoot = '/admin/dashboards';
 export const searchPath = `${adminRoot}/#`
 export const   Url = ''
 export const apiUrl = 'https://api.coloredstrategies.com';

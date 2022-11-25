@@ -1,5 +1,7 @@
-<template>
 
+
+<template>
+<LayoutHome>
     <div class="d-flex justify-content-center font-bold mt-4">
 <h1>Welcome floks  </h1>
 
@@ -8,36 +10,45 @@
         <router-link :to="'/user'" class="btn btn-primary">{{isLogged}}</router-link>
         <a class="btn btn-secondary" v-if="user" v-on:click="logout()">LogOut</a>
 </h1>
+</LayoutHome>
 </template>
 
 <script setup>
+import LayoutHome from '../../Layouts/HomeLayout.vue'
+import router from '@/router';
+import { computed, onMounted, onUnmounted, watch, watchEffect } from 'vue';
 
-import { computed } from 'vue';
+
 import {getCurrentUser} from'../../utils'
 import {UserRole} from'../../utils/auth.roles'
-import {  mapActions } from '../../utils/map-state.js'
+import {  mapActions,mapGetters } from '../../utils/map-state.js'
 const {signOut} =mapActions();
+const {currentUser} =mapGetters();
  const user=getCurrentUser();
 
 
  const module = 'user';
- const isLogged=  computed(()=>{
-     if(user != null || user != undefined)
-{
-    if( user.role==UserRole.Admin){
-      return "You Are Logged Like Admin"
-    }else{
-        return "You Are Logged Like Client"
-    }
-}
 
-return "Log In Please  "
+ const isLogged=  computed(()=>{
+    if ((user != null || user != undefined)){
+        return   user.role==UserRole.Admin?"You Are Logged Like Admin":"You Are Logged Like Client"
+
+    }
+  return "Log In Please  "
 
 
  })
 
+ watch(currentUser, async (newvalue, value) => {
 
-  console.log(signOut)
+    if ( !newvalue || newvalue.id==null || newvalue == undefined) {
+                    setTimeout(() => {
+                        location.reload();
+                    }, 200);
+                }
+
+    })
+
  const logout=()=>{
     signOut()
  }
