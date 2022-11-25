@@ -9,14 +9,27 @@
             </div>
         </div>
         <div class="progress-bar-circle progress-bar-banner position-relative">
-            <radial-progress-bar :diameter="diameter" :strokeWidth="strokeWidth" :completed-steps="percent" :total-steps=100>{{progressText}}</radial-progress-bar>
+            <radial-progress-bar      :is-bg-shadow="true"
+      :bg-shadow="{
+        inset: true,
+        vertical: 2,
+        horizontal: 2,
+        blur: 10,
+        opacity: .4,
+        color: '#000000'
+    }"
+      empty-color="#f7f7f7"
+      :border-width="6"
+      :border-bg-width="30"   :size="100" :is-gradient="true"  :show-percent="true"   :percent="percent" >{{progressText}}</radial-progress-bar>
         </div>
     </b-card-body>
 </b-card>
 </template>
 
 <script>
-import RadialProgressBar from 'vue-radial-progress'
+import Rs  from 'vue-radial-progress'
+import "vue3-circle-progress/dist/circle-progress.css";
+import RadialProgressBar from "vue3-circle-progress";
 export default {
     components: {
         'radial-progress-bar': RadialProgressBar
@@ -24,10 +37,11 @@ export default {
     props: ['icon', 'title', 'detail', 'percent', 'progressText'],
     data() {
         return {
-            diameterDefault: 125,
+            diameterDefault: 100,
             strokeWidthDefault: 5,
             diameter: this.diameterDefault,
-            strokeWidth: this.strokeWidthDefault
+            strokeWidth: this.strokeWidthDefault,
+
         }
     },
     mounted() {

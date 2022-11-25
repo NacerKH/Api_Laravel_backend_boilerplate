@@ -37,8 +37,8 @@
     </b-row>
     <b-row>
       <b-colxx lg="4" class="mb-4">
-        <gradient-with-radial-progress-card
-          icon="iconsminds-clock"
+        <gradient-with-radial-progress-card :key="5"
+           icon="iconsminds-clock"
           :title="`5 ${$t('dashboards.posts')}`"
           :detail="$t('dashboards.pending-for-publish')"
           :percent="5*100/12"
@@ -46,7 +46,7 @@
         />
       </b-colxx>
       <b-colxx lg="4" class="mb-4">
-        <gradient-with-radial-progress-card
+        <gradient-with-radial-progress-card :key="43"
           icon="iconsminds-male"
           :title="`4 ${$t('dashboards.users')}`"
           :detail="$t('dashboards.on-approval-process')"
@@ -55,7 +55,7 @@
         />
       </b-colxx>
       <b-colxx lg="4" class="mb-4">
-        <gradient-with-radial-progress-card
+        <gradient-with-radial-progress-card :key="4"
           icon="iconsminds-bell"
           :title="`8 ${$t('dashboards.alerts')}`"
           :detail="$t('dashboards.waiting-for-notice')"
@@ -76,8 +76,12 @@ import NewComments from "../../../../containers/dashboards/NewComments.vue";
 import QuickPost from "../../../../containers/dashboards/QuickPost.vue";
 import WebsiteVisitsChartCard from "../../../../containers/dashboards/WebsiteVisitsChartCard.vue";
 import GradientWithRadialProgressCard from "../../../../components/Cards/GradientWithRadialProgressCard.vue";
-
+let uuid = 0;
 export default {
+    beforeCreate() {
+        this.uuid = uuid.toString();
+        uuid += 1;
+    },
   components: {
      "best-sellers": BestSellers,
      "cakes": Cakes,

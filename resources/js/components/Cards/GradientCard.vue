@@ -5,3 +5,5 @@
         </b-card-body>
     </b-card>
 </template>
+<script>
+</script>

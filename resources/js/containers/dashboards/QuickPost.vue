@@ -6,7 +6,7 @@
         <b-form-input v-model="quickPost.title" :placeholder="$t('dashboards.title')"></b-form-input>
       </b-form-group>
       <b-form-group horizontal label-cols="3" breakpoint="sm" :label="$t('dashboards.content')">
-        <b-textarea
+        <b-form-textarea
           v-model="quickPost.content"
           :placeholder="$t('dashboards.content')"
           :rows="4"
