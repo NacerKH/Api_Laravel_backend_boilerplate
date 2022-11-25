@@ -59,18 +59,11 @@ const i18n = createI18n({
 })
 
 const components = import.meta.globEager('./Pages/**/*.vue')
-
 Object.entries(components).forEach(([path, definition]) => {
-
-
-
-        const componentName = path.split('/').pop().replace(/\.\w+$/, '')
-        app.component(componentName, definition.default)
-
-
-
-
+const componentName = path.split('/').pop().replace(/\.\w+$/, '')
+app.component(componentName, definition.default)
 });
+
 app.component('piaf-breadcrumb', Breadcrumb);
 app.component('b-refresh-button', RefreshButton);
 app.component('b-colxx', bColxx);
@@ -79,8 +72,6 @@ app.component('b-colxx', bColxx);
 app.directive('b-tooltip', vBTooltip);
 app.use(router)
     .use(BootstrapVue3)
-
-
     .use(Notifications,{ velocity })
     .use(VueScrollTo)
     .use(ContextMenu)

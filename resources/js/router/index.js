@@ -56,9 +56,16 @@ const routes = [
 
           ]
     },
+        {
+        path: "/admin",
+        name: 'adminRedirect',
+        component:dashboard,
+        redirect: `${adminRoot}/default`,
+      }
+
     ,
     {
-        path:`${adminRoot}`,
+        path:`${adminRoot}` ,
         name: 'admin',
         component:dashboard,
         meta: { loginRequired: true, roles: UserRole.Admin },
@@ -94,10 +101,6 @@ const routes = [
         path: "/unauthorized",
         component: () => import(/* webpackChunkName: "unauthorized" */ "../Pages/Unauthorized.vue")
       },
-    // {
-    //     path: "*",
-    //     component: () => import(/* webpackChunkName: "error" */ "../Pages/Error.vue")
-    //   }
 
 ];
 const router= createRouter({

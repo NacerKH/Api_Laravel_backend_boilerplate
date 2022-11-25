@@ -24,16 +24,26 @@ export default {
   mounted() {
     let path = this.$route.path.substr(1);
     let rawPaths = path.split("/");
+    console.log(path )
 
     for (var pName in this.$route.params) {
       if (rawPaths.includes(this.$route.params[pName])) {
         rawPaths = rawPaths.filter(x => x !== this.$route.params[pName]);
+
       }
     }
+    for (var key in  rawPaths) {
+        console.log (rawPaths[key])
+    if (rawPaths[key] == 'admin') {
+         rawPaths.splice(key, 1);
+    }
+}
     rawPaths.map((sub, index) => {
+        // console.log(sub )
       this.items.push({
         text:
-          "/" + sub !== adminRoot
+          "/" + sub !== adminRoot || "/" + sub =='admin'
+
             ? this.$t("menu." + sub)
             : this.$t("menu.home"),
         to: this.getUrl(path, sub, index)
