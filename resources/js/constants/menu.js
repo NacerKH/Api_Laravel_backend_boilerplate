@@ -401,29 +401,15 @@ const data = [{
   to: `${adminRoot}/users`,
   subs: [
     {
-      id: "ui-forms",
-      label: "menu.forms",
+      id: "users",
+      label: "menu.manage",
       to: `${adminRoot}/ui/forms`,
       subs: [{
-        icon: "simple-icon-notebook",
-        label: "menu.layouts",
-        to: `${adminRoot}/ui/forms/layouts`
+        icon: "simple-icon-user",
+        label: "menu.users",
+        to: `${adminRoot}/UsersList`
       },
-      {
-        icon: "simple-icon-puzzle",
-        label: "menu.components",
-        to: `${adminRoot}/ui/forms/components`
-      },
-      {
-        icon: "simple-icon-check",
-        label: "menu.validations",
-        to: `${adminRoot}/ui/forms/validations`
-      },
-      {
-        icon: "simple-icon-magic-wand",
-        label: "menu.wizard",
-        to: `${adminRoot}/ui/forms/wizard`
-      }
+
       ]
     },
 ]

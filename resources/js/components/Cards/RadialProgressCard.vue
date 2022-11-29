@@ -11,7 +11,7 @@
             <radial-progress-bar      :is-bg-shadow="true"
       :bg-shadow="{
         inset: true,
-        vertical: 2,
+        vertical: 4,
         horizontal: 2,
         blur: 10,
         opacity: .4,

@@ -19,6 +19,7 @@
         <b-card>
           <vuetable
             ref="vuetable"
+
             :api-url="apiBase"
             :query-params="makeQueryParams"
             :per-page="perPage"
@@ -30,7 +31,9 @@
             @vuetable:row-clicked="rowClicked"
             @vuetable:cell-rightclicked="rightClicked"
           >
-            <template slot="actions" slot-scope="props">
+            <template v-slot:actions="props"
+             >
+
               <b-form-checkbox
                 :checked="selectedItems.includes(props.rowData.id)"
                 class="itemCheck mb-0"
@@ -46,20 +49,20 @@
       </b-colxx>
     </b-row>
 
-    <v-contextmenu ref="contextmenu">
-      <v-contextmenu-item @click="onContextMenuAction('copy')">
+    <context-menu ref="contextmenu"  :options="optionsComopnent">
+      <context-menu-item @click="onContextMenuAction('copy')">
         <i class="simple-icon-docs" />
         <span>Copy</span>
-      </v-contextmenu-item>
-      <v-contextmenu-item @click="onContextMenuAction('move-to-archive')">
+      </context-menu-item>
+ <context-menu-item @click="onContextMenuAction('move-to-archive')">
         <i class="simple-icon-drawer" />
         <span>Move to archive</span>
-      </v-contextmenu-item>
-      <v-contextmenu-item @click="onContextMenuAction('delete')">
+      </context-menu-item>
+      <context-menu-item @click="onContextMenuAction('delete')">
         <i class="simple-icon-trash" />
         <span>Delete</span>
-      </v-contextmenu-item>
-    </v-contextmenu>
+      </context-menu-item>
+    </context-menu>
   </div>
 </template>
 <script>
@@ -78,6 +81,12 @@ export default {
   },
   data() {
     return {
+        optionsComopnent: {
+      zIndex: 3,
+      minWidth: 230,
+      x: 500,
+      y: 200
+    },
       isLoad: false,
       apiBase: apiUrl + "/cakes/fordatatable",
       sort: "",
@@ -125,8 +134,8 @@ export default {
           width: "25%"
         },
         {
-          name: "__slot:actions",
-          title: "",
+          name: "actions",
+          title: "actions",
           titleClass: "center aligned text-right",
           dataClass: "center aligned text-right",
           width: "5%"

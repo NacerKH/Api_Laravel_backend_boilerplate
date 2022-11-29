@@ -1,6 +1,10 @@
 import _ from 'lodash';
 window._ = _;
 
+
+import jquery from 'jquery';
+window.jquery = jquery;
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

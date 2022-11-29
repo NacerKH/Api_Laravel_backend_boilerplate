@@ -14,7 +14,7 @@
         inset: true,
         vertical: 2,
         horizontal: 2,
-        blur: 10,
+        blur: 4,
         opacity: .4,
         color: '#000000'
     }"

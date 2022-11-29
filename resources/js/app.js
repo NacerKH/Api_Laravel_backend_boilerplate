@@ -39,6 +39,7 @@ import Vuetable from 'vue3-vuetable'
 import vuePerfectScrollbar from 'vue3-perfect-scrollbar'
 import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
 import ShortKey from'vue-shortkey'
+
 var color = getThemeColor();
 
 

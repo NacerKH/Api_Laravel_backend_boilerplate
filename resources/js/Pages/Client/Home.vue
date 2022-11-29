@@ -7,7 +7,8 @@
 
     </div>
     <h1 class="d-flex  p-2 justify-content-center font-bold mt-4">
-        <router-link :to="'/user'" class="btn btn-primary">{{isLogged}}</router-link>
+        <router-link :to="DashboardLink" class="btn btn-primary">{{isLogged}}</router-link>
+
         <a class="btn btn-secondary" v-if="user" v-on:click="logout()">LogOut</a>
 </h1>
 </LayoutHome>
@@ -22,6 +23,7 @@ import { computed, onMounted, onUnmounted, watch, watchEffect } from 'vue';
 import {getCurrentUser} from'../../utils'
 import {UserRole} from'../../utils/auth.roles'
 import {  mapActions,mapGetters } from '../../utils/map-state.js'
+import { adminRoot } from '@/constants/config';
 const {signOut} =mapActions();
 const {currentUser} =mapGetters();
  const user=getCurrentUser();
@@ -35,6 +37,15 @@ const {currentUser} =mapGetters();
 
     }
   return "Log In Please  "
+
+
+ })
+ const DashboardLink=  computed(()=>{
+    if ((user != null || user != undefined)){
+        return   user.role==UserRole.Admin?adminRoot:"/client/profile"
+
+    }
+  return "/user/login"
 
 
  })

@@ -66,14 +66,14 @@ const routes = [
     ,
     {
         path:`${adminRoot}` ,
-        name: 'admin',
-        component:dashboard,
+        name: 'adminDashboard',
+        component: async () => await import('../Pages/Admin/app/dashboards/indexDashboard.vue'),
         meta: { loginRequired: true, roles: UserRole.Admin },
         redirect: `${adminRoot}/default`,
         children: [
             {
               path: "default",
-              component: DefaultDashboards,
+              component: async () => await import("../Pages/Admin/app/dashboards/DefaultDashboard.vue"),
               meta: { loginRequired: true, roles: UserRole.Admin },
             },
             {
@@ -91,8 +91,36 @@ const routes = [
                 component: content,
                 meta: { loginRequired: true, roles: UserRole.Admin },
               },
+              {
+                path: "UsersList",
+                component:() =>import("../Pages/Admin/app/Ressources/Users/ListUsers.vue"),
+                meta: { loginRequired: true, roles: UserRole.Admin },
+              },
           ]
     },
+    // {
+    //     path:`${adminRoot}` ,
+    //     name: 'adminManageUser',
+    //     component: async () => await import('../Pages/Admin/app/dashboards/indexDashboard.vue'),
+    //     meta: { loginRequired: true, roles: UserRole.Admin },
+    //     redirect: `${adminRoot}/UsersList`,
+    //     children: [
+    //         {
+    //           path: "UsersList",
+    //           component: async () => await import("../Pages/Admin/app/dashboards/DefaultDashboard.vue"),
+    //           meta: { loginRequired: true, roles: UserRole.Admin },
+    //         },
+
+    //       ]
+    // },
+    ,
+    {
+        path: "/client/profile",
+        name: 'client.profil',
+        component: () => import(/* webpackChunkName: "login" */ "../Pages/Client/Profil/Profil.vue"),
+
+        meta: { loginRequired: true, roles: UserRole.Editor },
+      },
     {
         path: "/error",
         component: () => import(/* webpackChunkName: "error" */ "../Pages/Error.vue")

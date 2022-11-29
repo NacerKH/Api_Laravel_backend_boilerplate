@@ -119,7 +119,9 @@
     "second-menu": "Second Menu",
     "second": "Second",
     "start": "Start",
-    "single": "Single"
+    "single": "Single",
+    "manage":"Access rights",
+    "UsersList":"List Users"
   },
   "dashboards": {
     "pending-orders": "Pending Orders",

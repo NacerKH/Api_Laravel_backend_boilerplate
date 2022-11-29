@@ -3,12 +3,14 @@
     <b-colxx xxs="12">
       <h1>{{ title }}</h1>
       <div class="top-right-button-container">
-        <b-button-group>
-          <b-dropdown split right @click="selectAll(true)" class="check-button" variant="primary">
+        <b-button-group  ariaLabel="dd" >
+
+          <b-dropdown  split right    @click="selectAll(true)"  variant="primary">
+
             <label
               class="custom-control custom-checkbox pl-4 mb-0 d-inline-block"
-              slot="button-content"
-            >
+
+             >
               <input
                 class="custom-control-input"
                 type="checkbox"
@@ -41,7 +43,7 @@
         <b-collapse id="displayOptions" class="d-md-block">
           <div class="d-block d-md-inline-block pt-1">
             <div class="search-sm d-inline-block float-md-left mr-1 align-top">
-              <b-input :placeholder="$t('menu.search')"  @input="(val) => searchChange(val)" />
+              <b-form-input :placeholder="$t('menu.search')"  @input="(val) => searchChange(val)" />
             </div>
           </div>
           <div class="float-md-right pt-1">

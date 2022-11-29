@@ -341,7 +341,7 @@ export default {
         console.log(val)
       let color = getThemeColor();
       let isChange = false;
- 
+
       if (val && color.indexOf("light") > -1) {
         isChange = true;
         color = color.replace("light", "dark");

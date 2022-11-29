@@ -58,6 +58,13 @@ export default {
             title: "Category",
             titleClass: "",
             dataClass: "text-muted"
+          },
+          {
+            name: "actions",
+            sortField: "category",
+            title: "actions",
+            titleClass: "",
+            dataClass: "text-muted"
           }
         ]
       }
