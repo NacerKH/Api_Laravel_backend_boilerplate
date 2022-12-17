@@ -18,10 +18,9 @@
         <vuetable
           ref="vuetable"
           class="table-divided order-with-arrow"
-          :api-url="apiBase"
           :query-params="makeQueryParams"
           :per-page="perPage"
-          :reactive-api-url="true"
+          :data="users"
           :fields="fields"
           pagination-path
           :row-class="onRowClass"
@@ -67,7 +66,7 @@ import { apiUrl } from "../../../../../constants/config";
 import DatatableHeading from "../../../../../containers/datatable/DatatableHeading.vue";
 
 export default {
-  props: ["title"],
+  props: ["title",'users'],
   components: {
 
     "vuetable-pagination-bootstrap": VuetablePaginationBootstrap,
@@ -98,37 +97,30 @@ export default {
 
       fields: [
         {
-          name: "title",
-          sortField: "title",
+          name: "name",
+          sortField: "name",
           title: "Name",
           titleClass: "",
           dataClass: "list-item-heading",
           width: "50%"
         },
         {
-          name: "sales",
-          sortField: "sales",
-          title: "Sales",
+          name: "email",
+          sortField: "email",
+          title: "Email",
           titleClass: "",
           dataClass: "text-muted",
           width: "10%"
         },
         {
-          name: "stock",
-          sortField: "stock",
-          title: "Stock",
+          name: "role",
+          sortField: "role",
+          title: "Role",
           titleClass: "",
           dataClass: "text-muted",
           width: "10%"
         },
-        {
-          name: "category",
-          sortField: "category",
-          title: "Category",
-          titleClass: "",
-          dataClass: "text-muted",
-          width: "25%"
-        },
+
         {
           name: "actions",
           title: "actions",
@@ -195,13 +187,14 @@ export default {
       if (!this.selectedItems.includes(dataItem.id)) {
         this.selectedItems = [dataItem.id];
       }
-      this.$refs.contextmenu.show({ top: event.pageY, left: event.pageX });
+      this.$refs.contextmenu.show({ top: event.pageY, left: event.pageX });!
     },
     onPaginationData(paginationData) {
-      this.from = paginationData.from;
-      this.to = paginationData.to;
-      this.total = paginationData.total;
-      this.lastPage = paginationData.last_page;
+
+      this.from = paginationData.meta.from;
+      this.to = paginationData.meta.to;
+      this.total = paginationData.meta.total;
+      this.lastPage = paginationData.meta.last_page;
       this.items = paginationData.data;
       this.$refs.pagination.setPaginationData(paginationData);
     },
@@ -254,6 +247,7 @@ export default {
   },
   computed: {
     isSelectedAll() {
+    console.log(this.selectedItems.length )
       return this.selectedItems.length >= this.items.length;
     },
     isAnyItemSelected() {

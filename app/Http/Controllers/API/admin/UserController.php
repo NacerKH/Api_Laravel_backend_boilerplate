@@ -20,10 +20,10 @@ class UserController extends  BaseController
      */
     public function index()
     {
-        $users=User::with(['roles','permissions'])->get();
+
 
         return $this->sendResponse(
-            UserResource::collection(User::with(['roles','permissions'])->paginate(20))->response()->getData(true)
+            UserResource::collection(User::with(['roles','permissions'])->paginate(3))->response()->getData(true)
             ,"Getting  Your Users Successfully  !");
 
 
