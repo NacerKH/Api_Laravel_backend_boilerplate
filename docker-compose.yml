@@ -1,0 +1,71 @@
+version: "3"
+services:
+  #PHP Service
+  api-boilerplate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digitalocean.com/php
+    container_name: api-boilerplate
+    restart: always
+    tty: true
+    environment:
+      APP_KEY: base64:TPTxTtLRf5q57od1Q3hUCazPEZMxPyxHwf6uv+5q7PU=
+      SERVICE_NAME: api-boilerplate
+      DB_CONNECTION: mysql
+      DB_HOST: db-boilerplate
+      DB_DATABASE: api-boilerplate
+      DB_PASSWORD: passwd
+      DB_PORT: 3306
+      DB_USERNAME: root
+      APP_ENV: local
+      APP_DEBUG: "true"
+      MAIL_MAILER: smtp
+      MAIL_HOST: smtp.mailtrap.io
+      MAIL_PORT: "2525"
+      MAIL_USERNAME: 52965b61d77f22
+      MAIL_PASSWORD: 40567fdc0ef352
+      MAIL_ENCRYPTION: tls
+      MAIL_FROM_ADDRESS: laravel@test.com
+      MAIL_FROM_NAME: "${APP_NAME}"
+    ports:
+      - 8008:80
+    networks:
+      - api-network
+    command: bash -c " (composer install || true) && (php artisan migrate || true) && (php artisan config:cache || true) && (php artisan route:clear || true) && php-fpm"
+  db-boilerplate:
+    image: mysql:5.7.22
+    container_name: api-db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "33090:3306"
+    environment:
+      MYSQL_DATABASE: api-boilerplate
+      MYSQL_ROOT_PASSWORD: "passwd"
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+
+    networks:
+      - api-network
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: travellist-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./dockerfiles/nginx:/etc/nginx/conf.d
+    networks:
+      - api-network
+
+#Docker Networks
+networks:
+  api-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
