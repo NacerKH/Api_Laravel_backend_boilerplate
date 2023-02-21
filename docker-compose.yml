@@ -49,7 +49,9 @@ services:
       MYSQL_ROOT_PASSWORD: "passwd"
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
-
+    volumes:
+      - dbdata:/var/www
+      - ./dockerfiles/nginx:/etc/nginx/conf.d
     networks:
       - api-network
   nginx:
