@@ -16,7 +16,7 @@ trait SocialiteTrait {
   }
 
    public function signInOrSignUpSocialite( $userSocialite, $user,$service)
-   {       dd( $userSocialite, $user,$service);
+   {       
         if (empty( $user)){
           $data= $this->createUserDependService($service,$userSocialite);
            $createUser = User::create($data);
