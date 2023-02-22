@@ -15,7 +15,7 @@ trait TwoFactorAuthenticatable
      *
      * @return string
      */
-    public static function generate(): string
+    public static function generateRecoveryCode(): string
     {
         return Str::random(10) . '-' . Str::random(10);
     }
