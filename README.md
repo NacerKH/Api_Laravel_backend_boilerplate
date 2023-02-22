@@ -17,6 +17,7 @@ An efficient way to avoid repeated blocks and it saves times ⚡ for Every new p
 - [x] user roles (admin,client)
 - [x] users and roles permission
 - [x] login socialite
+- [x]  MFA
 
  <hr>
 
