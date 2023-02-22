@@ -15,32 +15,48 @@ trait TwoFactorAuthenticatable
      *
      * @return string
      */
-    public static function generate()
+    public static function generate(): string
     {
         return Str::random(10) . '-' . Str::random(10);
     }
     /**
-     * Determine if two-factor authentication has been enabled.
+     * Determine if two-factor authentication has been enabled And Confirmed.
      *
      * @return bool
      */
-    public function hasEnabledTwoFactorAuthentication()
+    public function hasEnabledTwoFactorAuthenticationConfirmed(): bool
     {
-        return !is_null($this->two_factor_secret) &&
+        return is_null($this->two_factor_secret) &&
             !is_null($this->two_factor_confirmed_at);
     }
+
+    /**
+     * Determine if two-factor authentication has been enabled not Confirmed.
+     *
+     * @return bool
+     */
+    public function hasEnabledTwoFactorAuthenticationNotConfirmed():bool
+    {
+        return !is_null($this->two_factor_secret) &&
+            is_null($this->two_factor_confirmed_at);
+    }
+
 
     /**
      * Get the user's two factor authentication recovery codes.
      *
      * @return array
      */
-    public function recoveryCodes()
+    public function recoveryCodes():array
     {
         return json_decode(decrypt($this->two_factor_recovery_codes), true);
     }
-
-    public function generateSecretKey()
+    /**
+     * generate a secret Key .
+     *
+     * @return string
+     */
+    public function generateSecretKey():string
     {
 
         $secretKey = "";
