@@ -68,17 +68,17 @@ class TwoFactorAuthenticationServices
      */
     public function confirmTwoFactorAuthentication(string $code, User $user)
     {
-        return $user->hasEnabledTwoFactorAuthenticationNotConfirmed() && $this->_VerifyTwoFactorAuthenticationKeyIdentic($code, $user) ?
-            response()->json(['message' => 'Two-factor authentication confirmed.', 'data' => $user->forceFill([
-                'two_factor_secret' => null, 'two_factor_confirmed_at' => now(),
-            ])->save()], Response::HTTP_OK) :
+        return  $this->_VerifyTwoFactorAuthenticationKeyIdentic($code, $user) ?
+            response()->json(['message' => 'Two-factor authentication confirmed.', 
+            'data' => $user->forceFill(['two_factor_secret' => null, 'two_factor_confirmed_at' => now(),])->save()],
+             Response::HTTP_OK) :
             response()->json(['message' => 'Invalid two-factor authentication code.'], Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
 
     public function confirmTwoFactorAuthenticationWithRecoveryCodes(string $code, User $user)
     {
-        return $user->hasEnabledTwoFactorAuthenticationNotConfirmed() &&
+        return
             $this->_VerifyTwoFactorAuthenticationWithRecoveryCodes($code, $user) ?
             $user->forceFill(['two_factor_secret' => null, 'two_factor_confirmed_at' => now()])
             ->save() && $this->replaceRecoveryCode($code, $user)
