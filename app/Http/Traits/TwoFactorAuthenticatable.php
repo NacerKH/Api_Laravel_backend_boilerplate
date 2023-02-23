@@ -35,19 +35,25 @@ trait TwoFactorAuthenticatable
      *
      * @return bool
      */
-    public function hasEnabledTwoFactorAuthenticationNotConfirmed():bool
+    public function hasEnabledTwoFactorAuthenticationNotConfirmed(): bool
     {
         return !is_null($this->two_factor_secret) &&
             is_null($this->two_factor_confirmed_at);
     }
 
+    public function hasDisabledTwoFactorAuthentication(): bool
+    {
+        return is_null($this->two_factor_secret) &&
+            is_null($this->two_factor_confirmed_at) &&
+            is_null($this->two_factor_recovery_codes);
+    }
 
     /**
      * Get the user's two factor authentication recovery codes.
      *
      * @return array
      */
-    public function recoveryCodes():array
+    public function recoveryCodes(): array
     {
         return json_decode(decrypt($this->two_factor_recovery_codes), true);
     }
@@ -56,7 +62,7 @@ trait TwoFactorAuthenticatable
      *
      * @return string
      */
-    public function generateSecretKey():string
+    public function generateSecretKey(): string
     {
 
         $secretKey = "";
