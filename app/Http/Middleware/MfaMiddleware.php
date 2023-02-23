@@ -15,8 +15,10 @@ class MfaMiddleware
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {
-        return $request->user()->hasEnabledTwoFactorAuthenticationConfirmed() ?
+    {        
+      if ($request->user()->hasDisabledTwoFactorAuthentication()) return $next($request);
+               
+     return $request->user()->hasEnabledTwoFactorAuthenticationConfirmed() ?
             $next($request) : response()->json('Provide to confirm two factory Authentification code code ');
     }
 }
