@@ -61,7 +61,7 @@ class TwoFactoryAuthenticableController extends BaseController
     /**
      * getRecoveryCodes
      *
-     * @return \Illuminate\Http\Response 
+     * @return \Illuminate\Http\JsonResponse
      */
     public function getRecoveryCodes()
     {
@@ -91,5 +91,14 @@ class TwoFactoryAuthenticableController extends BaseController
     public function regenerateNewRecoveryCodes()
     {
         return $this->TwoFactorAuthenticationServices->regenerateNewRecoveryCodes(request()->user());
+    }
+    /**
+     * regenerate New Recovery Codes
+     *
+     * @return void
+     */
+    public function sendSecretCode()
+    {
+        return $this->TwoFactorAuthenticationServices->sendSecretCode(request()->user());
     }
 }
