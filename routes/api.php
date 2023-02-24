@@ -34,6 +34,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/disable-mfa', [TwoFactoryAuthenticableController::class, 'disableMfa'])->name('user.disable.mfa');
     Route::post('/confirm-mfa-recovery-code/{code}', [TwoFactoryAuthenticableController::class, 'confirmMfaWithRecoveryCodes'])->name('user.confirm.mfa.recovery.code');
     Route::post('/regenerate-recovery-codes', [TwoFactoryAuthenticableController::class, 'regenerateNewRecoveryCodes'])->name('user.regnerate.mfa.recovery.codes');
+    Route::post('/send-otp-code', [TwoFactoryAuthenticableController::class, 'sendSecretCode'])->name('user.send.otp.code');
 });
 
 Route::middleware('guest')->group(function () {
