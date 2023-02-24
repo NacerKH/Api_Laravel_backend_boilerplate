@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Services;
 
 use App\Models\User;
+use App\Notifications\MfaNotifcation;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 
@@ -67,11 +68,15 @@ class TwoFactorAuthenticationServices
      * @return \Illuminate\Http\JsonResponse
      */
     public function confirmTwoFactorAuthentication(string $code, User $user)
-    {
+    {     
         return  $this->_VerifyTwoFactorAuthenticationKeyIdentic($code, $user) ?
-            response()->json(['message' => 'Two-factor authentication confirmed.', 
-            'data' => $user->forceFill(['two_factor_secret' => null, 'two_factor_confirmed_at' => now(),])->save()],
-             Response::HTTP_OK) :
+            response()->json(
+                [
+                    'message' => 'Two-factor authentication confirmed.',
+                    'data' => $user->forceFill(['two_factor_secret' => null, 'two_factor_confirmed_at' => now(),])->save()
+                ],
+                Response::HTTP_OK
+            ) :
             response()->json(['message' => 'Invalid two-factor authentication code.'], Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
@@ -126,5 +131,14 @@ class TwoFactorAuthenticationServices
     private function _VerifyTwoFactorAuthenticationWithRecoveryCodes($code, User $user): bool
     {
         return  in_array($code, $user->recoveryCodes());
+    }
+
+
+    public function sendSecretCode(User $user)
+    {
+
+        $user->notify(new MfaNotifcation($user->two_factor_secret));
+
+        return response()->json(' Mfa Code sended successffuly', Response::HTTP_OK);
     }
 }
