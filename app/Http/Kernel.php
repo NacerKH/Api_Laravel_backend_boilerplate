@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Cors;
 use App\Http\Middleware\IsAdminMiddleware;
 use App\Http\Middleware\MfaMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -41,8 +42,9 @@ class Kernel extends HttpKernel
         ],
         'admin' => [
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            'throttle:api',
+            'throttle:admin',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            Cors::class,
             IsAdminMiddleware::class
         ],
 
@@ -50,6 +52,7 @@ class Kernel extends HttpKernel
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            Cors::class,
 
         ],
     ];
@@ -74,5 +77,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'isAdmin' => IsAdminMiddleware::class,
         'Mfa' =>  MfaMiddleware::class,
+        'core'=> Cors::class,
     ];
 }
